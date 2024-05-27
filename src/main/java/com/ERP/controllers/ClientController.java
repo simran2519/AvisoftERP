@@ -78,7 +78,4 @@ public class ClientController {
             return MyResponseGenerator.generateResponse(HttpStatus.BAD_REQUEST, false, "Error deleting client: " + e.getMessage(), null);
         }
     }
-
-
-
 }

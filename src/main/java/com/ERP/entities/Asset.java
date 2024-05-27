@@ -23,6 +23,4 @@ public class Asset
     private double purchaseCost;
     private String currentValue;
     private String status;
-
-
 }

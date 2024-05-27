@@ -26,7 +26,7 @@ public class HR {
             strategy = GenerationType.SEQUENCE,
             generator = "hr_sequence"
     )
-    private int hrId;
+    private long hrId;
 
     private String name;
     private String password;
