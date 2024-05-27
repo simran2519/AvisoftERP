@@ -1,0 +1,12 @@
+24-05-23 12:11:10.862 [main] INFO  c.E.s.DepartmentServiceTest - Starting updateDepartmentTest 
+24-05-23 12:11:11.095 [main] INFO  c.E.s.DepartmentServiceTest - updateDepartmentTest passed 
+24-05-23 12:11:11.119 [main] INFO  c.E.s.DepartmentServiceTest - Starting createDepartmentTest 
+24-05-23 12:11:11.178 [main] INFO  c.E.s.DepartmentServiceTest - createDepartmentTest passed 
+24-05-23 12:11:11.185 [main] INFO  c.E.s.DepartmentServiceTest - Starting deleteDepartmentTest 
+24-05-23 12:11:11.189 [main] INFO  c.E.s.DepartmentServiceTest - deleteDepartmentTest passed 
+24-05-23 12:11:11.202 [main] INFO  c.E.s.DepartmentServiceTest - Starting findDepartmentTest 
+24-05-23 12:11:11.206 [main] INFO  c.E.s.DepartmentServiceTest - findDepartmentTest passed 
+24-05-23 12:11:11.212 [main] INFO  c.E.s.DepartmentServiceTest - Starting createAllDepartmentsTest 
+24-05-23 12:11:11.227 [main] INFO  c.E.s.DepartmentServiceTest - createAllDepartmentsTest passed 
+24-05-23 12:11:11.239 [main] INFO  c.E.s.DepartmentServiceTest - Starting findAllDepartmentTest 
+24-05-23 12:11:11.251 [main] INFO  c.E.s.DepartmentServiceTest - findAllDepartmentTest passed 

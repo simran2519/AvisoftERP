@@ -26,7 +26,7 @@ public class SalaryStructure {
             strategy = GenerationType.SEQUENCE,
             generator = "salary_structure_sequence"
     )
-    private int structureId;
+    private long structureId;
 
     private String role;
     private String level;

@@ -1,0 +1,12 @@
+24-05-23 12:21:44.038 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting findAllAssetTest 
+24-05-23 12:21:44.265 [main] INFO  c.ERP.servicesTest.AssetServiceTest - findAllAssetTest passed 
+24-05-23 12:21:44.289 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting updateAssetTest 
+24-05-23 12:21:44.301 [main] INFO  c.ERP.servicesTest.AssetServiceTest - updateAssetTest passed 
+24-05-23 12:21:44.307 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting createAllAssetsTest 
+24-05-23 12:21:44.318 [main] INFO  c.ERP.servicesTest.AssetServiceTest - createAllAssetsTest passed 
+24-05-23 12:21:44.324 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting createAssetTest 
+24-05-23 12:21:44.327 [main] INFO  c.ERP.servicesTest.AssetServiceTest - createAssetTest passed 
+24-05-23 12:21:44.342 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting findAssetTest 
+24-05-23 12:21:44.346 [main] INFO  c.ERP.servicesTest.AssetServiceTest - findAssetTest passed 
+24-05-23 12:21:44.351 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting deleteAssetTest 
+24-05-23 12:21:44.355 [main] INFO  c.ERP.servicesTest.AssetServiceTest - deleteAssetTest passed 
