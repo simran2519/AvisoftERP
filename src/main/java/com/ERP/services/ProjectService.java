@@ -110,15 +110,4 @@ public class ProjectService implements ProjectServiceInter
             throw new IdNotFoundException("Error finding all projects: " + e.getMessage());
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 }
