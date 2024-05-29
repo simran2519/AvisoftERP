@@ -93,7 +93,7 @@ class EmployeeRepositoryTest {
     void testdelete()
     {
 
-        employeeRepository.delete(employeeRepository.findById(1L).get());
+        employeeRepository.delete(employeeRepository.findById(stored.getId()).get());
         List<Employee> employee1 = employeeRepository.findByName("daksh");
 
         assertThat(employee1.isEmpty()).isTrue();
