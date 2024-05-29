@@ -12,22 +12,22 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.util.*;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-@DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+//@DataJpaTest
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@SpringBootTest
 class ClientRepositoryTest {
 
     @Autowired
     ClientRepository clientRepository;
     Client client;
     Client store;
-
-
 
 
     JsonReader jsonReader = new JsonReader();
@@ -58,8 +58,7 @@ class ClientRepositoryTest {
 
     @AfterEach
     void tearDown() {
-        client = null;
-        clientRepository.deleteAll();
+
     }
 
     @Test
@@ -81,8 +80,18 @@ class ClientRepositoryTest {
     @Test
     void testdelete()
     {
-        clientRepository.delete(clientRepository.findById(1L).get());
-        Optional<Client> client1 = clientRepository.findById(1L);
+        client = Client.builder()
+                .clientId(1L)
+                .name(name)
+                .email(email)
+                .phone(phone)
+                .address(address)
+                .projectSet(new HashSet<>())
+                .build();
+
+       store = clientRepository.save(client);
+        clientRepository.delete(clientRepository.findById(store.getClientId()).get());
+        Optional<Client> client1 = clientRepository.findById(store.getClientId());
 
         Client deletedClient =null;
         if(client1.isPresent())

@@ -1,0 +1,6 @@
+24-05-28 16:55:57.627 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.controllersTest.AssetControllerTest]: AssetControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
+24-05-28 16:55:57.844 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.controllersTest.AssetControllerTest 
+24-05-28 16:55:58.244 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running 
+24-05-28 16:55:58.532 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final 
+24-05-28 16:55:58.574 [main] INFO  c.E.c.AssetControllerTest - Starting AssetControllerTest using Java 21.0.2 with PID 28188 (started by ASUS in C:\Users\ASUS\OneDrive\Desktop\AvisoftERP) 
+24-05-28 16:55:58.575 [main] INFO  c.E.c.AssetControllerTest - No active profile set, falling back to 1 default profile: "default" 

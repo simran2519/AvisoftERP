@@ -1,12 +1,18 @@
 package com.ERP.servicesTest;
 
+
 import com.ERP.controllers.HRController;
 import com.ERP.dtos.HRDto;
+import com.ERP.dtos.HRDto;
+import com.ERP.dtos.HRDto;
+import com.ERP.entities.HR;
+import com.ERP.entities.HR;
 import com.ERP.entities.HR;
 import com.ERP.exceptions.IdNotFoundException;
 import com.ERP.repositories.HRRepository;
 import com.ERP.services.HRService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -18,6 +24,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static com.ERP.Reporting.extent;
+import static com.ERP.Reporting.test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -174,54 +182,34 @@ class HRServiceTest {
     }
 
     @Test
-    void testFindAllHR() {
-        // Prepare test data
-        List<HRDto> hrList = Arrays.asList(
-                new HRDto(1, "John", "password", "Manager"),
-                new HRDto(2, "Alice", "password", "Employee")
-        );
+    void testDeleteHR()
+    {
+        HR newHR = new HR(1L, "John Doe", "password", "Admin");
+        long hrId = 1L;
+        // Mock behavior
+        given(hrRepository.findById(hrId)).willReturn(java.util.Optional.of(newHR));
 
-        // Mock HRService behavior
-        when(hrService.getAllHR()).thenReturn(hrList);
+        // Call the method under test
+        HRDto deletedHR = hrService.deleteHR(hrId);
 
-        // Call controller method
-        List<HRDto> response = hrController.findAllHR();
-
-        // Verify response
-        assertEquals(hrList.size(), response.size());
-        assertEquals(hrList.get(0).getName(), response.get(0).getName());
-        assertEquals(hrList.get(1).getName(), response.get(1).getName());
-        // Add more assertions as needed
+        // Assertions
+        Assertions.assertThat(deletedHR).isNotNull();
     }
-
-//    @Test
-//    void testDeleteHR_Success() {
-//        // Prepare test data
-//        long hrId = 1;
-//
-//        // Mock HRService behavior
-//        when(hrService.deleteHR(hrId)).thenReturn(new HRDto(1L, "Raman", "password", "role")); // Assuming deleteHR always returns a non-null HRDto
-//
-//        // Call controller method
-//        ResponseEntity<Object> responseEntity = hrController.deleteHR(hrId);
-//
-//        // Verify response
-//        assertEquals(HttpStatus.OK, responseEntity.getStatusCode()); // Assuming the response body is a String
-//    }
-
     @Test
-    void testDeleteHR_Failure() {
-        // Prepare test data
-        int hrId = 1;
+    public void findAllHRTest() {
+        // Mock data
+        HR newHR = new HR(1L, "John Doe", "password", "Admin");
+        List<HR> hrList = Arrays.asList(newHR, newHR); // Add necessary fields for hrs
 
-        // Mock HRService behavior to return null
-        when(hrService.deleteHR(hrId)).thenReturn(null);
+        // Mock behavior
+        given(hrRepository.findAll()).willReturn(hrList);
 
-        // Call controller method
-        ResponseEntity<Object> responseEntity = hrController.deleteHR(hrId);
+        // Call the method under test
+        List<HRDto> foundHRs = hrService.getAllHR();
 
-        // Verify response
-        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
-        assertEquals("Failed to delete HR", responseEntity.getBody()); // Assuming the response body is a String
+        // Assertions
+        Assertions.assertThat(foundHRs).isNotNull();
+        Assertions.assertThat(foundHRs.size()).isEqualTo(hrList.size());
+
     }
 }

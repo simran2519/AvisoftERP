@@ -17,6 +17,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import javax.swing.text.html.parser.Entity;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -55,8 +56,8 @@ class LeavesRepositoryTest {
     @BeforeEach
     void setUp() {
         Employee employee = new Employee();
-        employee.setId(employeeId); // Set the ID to 1
         employeeRepository.save(employee);
+
 
 
         leaves = Leaves.builder()
@@ -79,7 +80,7 @@ class LeavesRepositoryTest {
     }
     @Test
     void findById() {
-        Optional<Leaves> leaves1 = leavesRepository.findById(1L);
+        Optional<Leaves> leaves1 = leavesRepository.findById(storedLeaves.getId());
         if( leaves1.isPresent())
             assertThat(leaves1.get().getReason()).isEqualTo(storedLeaves.getReason());
 //        assertThat(leavesRepository.findById(storedLeaves.getId())).isPresent();
@@ -87,7 +88,8 @@ class LeavesRepositoryTest {
 
     @Test
     void findAllLeaves() {
-        assertThat(leavesRepository.findAll().get(0)).isEqualTo(storedLeaves);
+        List<Leaves>store = leavesRepository.findAll();
+        assertThat(leavesRepository.findAll().get(store.size()-1)).isEqualTo(storedLeaves);
     }
 
     @Test
