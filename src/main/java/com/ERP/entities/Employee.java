@@ -25,7 +25,6 @@ public class Employee {
     private String email;
     private String password;
     private String role;
-    private String password;
 
     @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL)
     private List<Task>task = new ArrayList<>();
