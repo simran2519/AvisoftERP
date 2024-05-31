@@ -1,15 +1,27 @@
 package com.ERP.controllersTest;
 
+import com.ERP.config.TestSecurityConfig;
+import com.ERP.controllers.ClientController;
 import com.ERP.controllers.TaskController;
 import com.ERP.dtos.TaskDto;
+import com.ERP.security.JwtHelper;
 import com.ERP.services.TaskService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.sql.Date;
@@ -24,18 +36,28 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(TaskController.class)
+@ExtendWith({SpringExtension.class, MockitoExtension.class})
+@ContextConfiguration(classes = TestSecurityConfig.class)
 public class TaskControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
     private TaskService taskService;
+    @MockBean
+    private JwtHelper jwtHelper;
 
     @BeforeEach
-    void setUp() {
+    void setUp()
+    {
+        when(jwtHelper.generateToken(Mockito.any())).thenReturn("mock-token");
+
+        // Setup Security context
+        SecurityContextHolder.clearContext();
     }
 
     @Test
+    @WithMockUser
     void getTask() throws Exception {
         // Mock data
         TaskDto taskDto1 = new TaskDto();
@@ -53,6 +75,7 @@ public class TaskControllerTest {
     }
 
     @Test
+    @WithMockUser
     void addTask() throws Exception {
         TaskDto taskDto = TaskDto.builder()
                 .taskId(1L)
@@ -72,6 +95,7 @@ public class TaskControllerTest {
     }
 
     @Test
+    @WithMockUser
     void getTaskById() throws Exception {
         TaskDto taskDto = TaskDto.builder()
                 .taskId(1L)
@@ -91,6 +115,7 @@ public class TaskControllerTest {
     }
 
     @Test
+    @WithMockUser
     void removeTask() throws Exception {
         TaskDto taskDto = TaskDto.builder()
                 .taskId(1L)
@@ -109,6 +134,7 @@ public class TaskControllerTest {
     }
 
     @Test
+    @WithMockUser
     void updateTask() throws Exception {
         // Prepare the salary structure object with updated values
         TaskDto existedTaskDto = TaskDto.builder()

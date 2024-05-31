@@ -1,9 +1,12 @@
 package com.ERP.controllersTest;
 
+import com.ERP.config.TestSecurityConfig;
+import com.ERP.controllers.ClientController;
 import com.ERP.controllers.LeavesController;
 import com.ERP.entities.Employee;
 import com.ERP.entities.Leaves;
 import com.ERP.entitiesTest.JsonReader;
+import com.ERP.security.JwtHelper;
 import com.ERP.services.LeavesService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -11,10 +14,19 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.io.IOException;
@@ -31,6 +43,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(LeavesController.class)
+@ExtendWith({SpringExtension.class, MockitoExtension.class})
+@ContextConfiguration(classes = TestSecurityConfig.class)
 class LeavesControllerTest {
 
     @Autowired
@@ -38,6 +52,8 @@ class LeavesControllerTest {
 
     @MockBean
     private LeavesService leavesService;
+    @MockBean
+    private JwtHelper jwtHelper;
 
     Leaves leaves;
 
@@ -80,6 +96,11 @@ class LeavesControllerTest {
                 .build();
 
         leavesList.add(leaves);
+        // Setup mock JWT token
+        when(jwtHelper.generateToken(Mockito.any())).thenReturn("mock-token");
+
+        // Setup Security context
+        SecurityContextHolder.clearContext();
     }
 
     @AfterEach
@@ -87,6 +108,7 @@ class LeavesControllerTest {
     }
 
     @Test
+    @WithMockUser
     void addLeaves() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
@@ -101,6 +123,7 @@ class LeavesControllerTest {
     }
 
     @Test
+    @WithMockUser
     void updateLeaves() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
@@ -115,6 +138,7 @@ class LeavesControllerTest {
     }
 
     @Test
+    @WithMockUser
     void findLeaves() throws Exception {
         when(leavesService.findLeaves(1L)).thenReturn(leaves);
         this.mockMvc.perform(get("/leaves/find/1")).andDo(print()).andExpect(status().isOk())
@@ -122,12 +146,14 @@ class LeavesControllerTest {
     }
 
     @Test
+    @WithMockUser
     void findAllLeaves() throws Exception {
         when(leavesService.findAllLeaves()).thenReturn(leavesList);
         this.mockMvc.perform(get("/leaves/findAll")).andDo(print()).andExpect(status().isOk());
     }
 
     @Test
+    @WithMockUser
     void deleteLeaves() throws Exception {
         when(leavesService.deleteLeaves(anyLong())).thenReturn(leaves);
         this.mockMvc.perform(delete("/leaves/delete/" + "1")).andDo(print()).andExpect(status().isOk());

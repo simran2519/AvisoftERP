@@ -1,23 +1,35 @@
 package com.ERP.controllersTest;
 
 import com.ERP.Reporting;
+import com.ERP.config.TestSecurityConfig;
+import com.ERP.controllers.ClientController;
 import com.ERP.controllers.ProjectController;
 import com.ERP.dtos.ProjectDto;
 import com.ERP.entities.Project;
 import com.ERP.entitiesTest.JsonReader;
+import com.ERP.security.JwtHelper;
 import com.ERP.services.ProjectService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.io.IOException;
@@ -34,6 +46,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ProjectController.class)
+@ExtendWith({SpringExtension.class, MockitoExtension.class})
+@ContextConfiguration(classes = TestSecurityConfig.class)
 public class ProjectControllerTest
 {
     private static final Logger logger = LoggerFactory.getLogger(ProjectControllerTest.class);
@@ -43,6 +57,8 @@ public class ProjectControllerTest
 
     @Autowired
     private MockMvc mockMvc;
+    @MockBean
+    private JwtHelper jwtHelper;
 
     @Autowired
     ObjectMapper objectMapper;
@@ -78,9 +94,14 @@ public class ProjectControllerTest
         project.setStartDate(startDate);
         project.setEndDate(endDate);
         project.setStatus(status);
+        when(jwtHelper.generateToken(Mockito.any())).thenReturn("mock-token");
+
+        // Setup Security context
+        SecurityContextHolder.clearContext();
     }
 
     @Test
+    @WithMockUser
     public void testCreateProject() throws Exception {
         test=extent.createTest("Create Project Test");
         logger.info("Starting testCreateProject");
@@ -99,6 +120,7 @@ public class ProjectControllerTest
     }
 
     @Test
+    @WithMockUser
     public void getProjectTest() throws Exception {
         test=extent.createTest("FindById Project Test");
         logger.info("Starting getProjectTest");
@@ -121,6 +143,7 @@ public class ProjectControllerTest
     }
 
     @Test
+    @WithMockUser
     public void getAllProjectsTest() throws Exception {
         test=extent.createTest("FindAll Projects Test");
         logger.info("Starting getAllProjectsTest");
@@ -141,6 +164,7 @@ public class ProjectControllerTest
     }
 
     @Test
+    @WithMockUser
     public void testUpdateProject() throws Exception {
         test=extent.createTest("Update Project Test");
         logger.info("Starting testUpdateProject");
@@ -165,6 +189,7 @@ public class ProjectControllerTest
     }
 
     @Test
+    @WithMockUser
     public void testDeleteProject() throws Exception {
         test=extent.createTest("Delete ProjectById Test");
         logger.info("Starting testDeleteProject");
@@ -182,6 +207,7 @@ public class ProjectControllerTest
     }
 
     @Test
+    @WithMockUser
     public void testAddAllProjects() throws Exception {
         test=extent.createTest("AddAll Projects Test");
         logger.info("Starting testAddAllProjects");

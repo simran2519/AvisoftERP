@@ -2,24 +2,37 @@
 package com.ERP.controllersTest;
 
 import com.ERP.Reporting;
+import com.ERP.config.TestSecurityConfig;
 import com.ERP.controllers.AssetController;
+import com.ERP.controllers.ClientController;
 import com.ERP.dtos.AssetDto;
 import com.ERP.entities.Asset;
 import com.ERP.entitiesTest.JsonReader;
+import com.ERP.security.JwtHelper;
 import com.ERP.services.AssetService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -29,18 +42,20 @@ import java.util.Map;
 
 import static com.ERP.Reporting.extent;
 import static com.ERP.Reporting.test;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-        import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 @WebMvcTest(AssetController.class)
+@ExtendWith({SpringExtension.class, MockitoExtension.class})
+@ContextConfiguration(classes = TestSecurityConfig.class)
 public class AssetControllerTest {
     private static final Logger logger = LoggerFactory.getLogger(AssetControllerTest.class);
 
     @MockBean
     AssetService assetService;
 
+    @MockBean
+    private JwtHelper jwtHelper;
     @Autowired
     private MockMvc mockMvc;
 
@@ -91,9 +106,16 @@ public class AssetControllerTest {
         asset.setPurchaseCost(purchaseCost);
         asset.setCurrentValue(currentValue);
         asset.setStatus(status);
+        // Setup mock JWT token
+        when(jwtHelper.generateToken(Mockito.any())).thenReturn("mock-token");
+
+        // Setup Security context
+        SecurityContextHolder.clearContext();
     }
 
+
     @Test
+    @WithMockUser
     public void testCreateAsset() throws Exception {
         test = extent.createTest("Create Asset Test");
         logger.info("Starting testCreateAsset");
@@ -112,6 +134,7 @@ public class AssetControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void getAssetTest() throws Exception {
         test = extent.createTest("FindById Asset Test");
         logger.info("Starting getAssetTest");
@@ -134,6 +157,7 @@ public class AssetControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void getAllAssetsTest() throws Exception {
         test = extent.createTest("FindAll Assets Test");
         logger.info("Starting getAllAssetsTest");
@@ -153,6 +177,7 @@ public class AssetControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void testUpdateAsset() throws Exception {
         test = extent.createTest("Update Asset Test");
         logger.info("Starting testUpdateAsset");
@@ -175,6 +200,7 @@ public class AssetControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void testDeleteAsset() throws Exception {
         test = extent.createTest("Delete AssetById Test");
         logger.info("Starting testDeleteAsset");
@@ -192,6 +218,7 @@ public class AssetControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void testAddAllAssets() throws Exception {
         test = extent.createTest("AddAll Assets Test");
         logger.info("Starting testAddAllAssets");

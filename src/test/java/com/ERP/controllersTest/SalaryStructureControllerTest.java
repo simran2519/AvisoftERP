@@ -1,15 +1,27 @@
 package com.ERP.controllersTest;
 
+import com.ERP.config.TestSecurityConfig;
+import com.ERP.controllers.ClientController;
 import com.ERP.controllers.SalaryStructureController;
 import com.ERP.dtos.SalaryStructureDto;
+import com.ERP.security.JwtHelper;
 import com.ERP.services.SalaryStructureService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
@@ -19,8 +31,9 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
 @WebMvcTest(SalaryStructureController.class)
+@ExtendWith({SpringExtension.class, MockitoExtension.class})
+@ContextConfiguration(classes = TestSecurityConfig.class)
 class SalaryStructureControllerTest {
 
     @Autowired
@@ -28,12 +41,20 @@ class SalaryStructureControllerTest {
 
     @MockBean
     private SalaryStructureService salaryStructureService;
+    @MockBean
+    private JwtHelper jwtHelper;
 
     @BeforeEach
-    void setUp() {
+    void setUp()
+    {
+        when(jwtHelper.generateToken(Mockito.any())).thenReturn("mock-token");
+
+        // Setup Security context
+        SecurityContextHolder.clearContext();
     }
 
     @Test
+    @WithMockUser
     void getSalaryStructure() throws Exception {
         // Mock data
         SalaryStructureDto salaryStructureDto1 = new SalaryStructureDto();
@@ -51,6 +72,7 @@ class SalaryStructureControllerTest {
     }
 
     @Test
+    @WithMockUser
     void addSalaryStructure() throws Exception {
         SalaryStructureDto salaryStructureDto = SalaryStructureDto.builder()
                 .level("intern")
@@ -68,6 +90,7 @@ class SalaryStructureControllerTest {
     }
 
     @Test
+    @WithMockUser
     void getSalaryStructureById() throws Exception {
         SalaryStructureDto salaryStructureDto = SalaryStructureDto.builder()
                 .level("intern")
@@ -86,6 +109,7 @@ class SalaryStructureControllerTest {
     }
 
     @Test
+    @WithMockUser
     void fetchSalaryStructureByRole() throws Exception {
         SalaryStructureDto salaryStructureDto1 = SalaryStructureDto.builder()
                 .level("intern")
@@ -111,6 +135,7 @@ class SalaryStructureControllerTest {
     }
 
     @Test
+    @WithMockUser
     void removeSalaryStructure() throws Exception {
         SalaryStructureDto salaryStructureDto = SalaryStructureDto.builder()
                 .level("intern")
@@ -127,6 +152,7 @@ class SalaryStructureControllerTest {
     }
 
     @Test
+    @WithMockUser
     void updateSalaryStructure() throws Exception {
         // Prepare the salary structure object with updated values
         SalaryStructureDto existingSalaryStructureDto = SalaryStructureDto.builder()
