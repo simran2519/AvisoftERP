@@ -1,8 +1,0 @@
-{
-  "name":"Test Asset",
-  "description": "This is a test asset",
-  "purchaseDate": "2023-05-01",
-  "purchaseCost": 500,
-  "currentValue": "current Value",
-  "status": "Active"
-}
