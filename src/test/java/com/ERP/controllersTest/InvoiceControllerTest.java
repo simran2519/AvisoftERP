@@ -1,24 +1,36 @@
 package com.ERP.controllersTest;
 
 import com.ERP.Reporting;
+import com.ERP.config.TestSecurityConfig;
+import com.ERP.controllers.ClientController;
 import com.ERP.controllers.InvoiceController;
 import com.ERP.controllers.InvoiceController;
 import com.ERP.dtos.InvoiceDto;
 import com.ERP.entities.Invoice;
 import com.ERP.entitiesTest.JsonReader;
+import com.ERP.security.JwtHelper;
 import com.ERP.services.InvoiceService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.io.IOException;
@@ -33,8 +45,10 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 @WebMvcTest(InvoiceController.class)
+@ExtendWith({SpringExtension.class, MockitoExtension.class})
+@ContextConfiguration(classes = TestSecurityConfig.class)
+//@WebMvcTest(InvoiceController.class)
 public class InvoiceControllerTest
 {
     private static final Logger logger = LoggerFactory.getLogger(InvoiceControllerTest.class);
@@ -42,6 +56,8 @@ public class InvoiceControllerTest
     @MockBean
     InvoiceService invoiceService;
 
+    @MockBean
+    private JwtHelper jwtHelper;
     @Autowired
     private MockMvc mockMvc;
 
@@ -84,9 +100,15 @@ public class InvoiceControllerTest
         invoice.setAmount(amount);
         invoice.setPaymentStatus(paymentStatus);
         invoice.setInvoiceDate(invoiceDate);
+        // Setup mock JWT token
+        when(jwtHelper.generateToken(Mockito.any())).thenReturn("mock-token");
+
+        // Setup Security context
+        SecurityContextHolder.clearContext();
     }
 
     @Test
+    @WithMockUser
     public void testCreateInvoice() throws Exception {
         test=extent.createTest("Create Invoice Test");
         logger.info("Starting testCreateInvoice");
@@ -105,6 +127,7 @@ public class InvoiceControllerTest
     }
 
     @Test
+    @WithMockUser
     public void getInvoiceTest() throws Exception {
         test=extent.createTest("FindById Invoice Test");
         logger.info("Starting getInvoiceTest");
@@ -127,6 +150,7 @@ public class InvoiceControllerTest
     }
 
     @Test
+    @WithMockUser
     public void getAllInvoicesTest() throws Exception {
         test=extent.createTest("FindAll Invoices Test");
         logger.info("Starting getAllInvoicesTest");
@@ -146,6 +170,7 @@ public class InvoiceControllerTest
     }
 
     @Test
+    @WithMockUser
     public void testUpdateInvoice() throws Exception {
         test=extent.createTest("Update Invoice Test");
         logger.info("Starting testUpdateInvoice");
@@ -170,6 +195,7 @@ public class InvoiceControllerTest
     }
 
     @Test
+    @WithMockUser
     public void testDeleteInvoice() throws Exception {
         test=extent.createTest("Delete InvoiceById Test");
         logger.info("Starting testDeleteInvoice");
@@ -187,6 +213,7 @@ public class InvoiceControllerTest
     }
 
     @Test
+    @WithMockUser
     public void testAddAllInvoices() throws Exception {
         test=extent.createTest("AddAll Invoices Test");
         logger.info("Starting testAddAllInvoices");

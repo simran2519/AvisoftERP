@@ -1,10 +1,12 @@
 package com.ERP.controllersTest;
 
+import com.ERP.config.TestSecurityConfig;
 import com.ERP.controllers.ClientController;
 import com.ERP.controllers.EmployeeController;
 import com.ERP.entities.Client;
 import com.ERP.entitiesTest.JsonReader;
 import com.ERP.exceptions.ClientNotFoundException;
+import com.ERP.security.JwtHelper;
 import com.ERP.services.ClientService;
 import com.ERP.services.EmployeeService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -14,10 +16,20 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.io.IOException;
@@ -35,10 +47,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ClientController.class)
+@ExtendWith({SpringExtension.class, MockitoExtension.class})
+@ContextConfiguration(classes = TestSecurityConfig.class)
 class ClientControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @MockBean
+    private JwtHelper jwtHelper;
 
     @MockBean
     private ClientService clientService;
@@ -70,6 +87,11 @@ class ClientControllerTest {
                 .build();
 
         clientList.add(client);
+        // Setup mock JWT token
+        when(jwtHelper.generateToken(Mockito.any())).thenReturn("mock-token");
+
+        // Setup Security context
+        SecurityContextHolder.clearContext();
     }
 
     @AfterEach
@@ -77,6 +99,7 @@ class ClientControllerTest {
     }
 
     @Test
+    @WithMockUser
     void addClient() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
@@ -92,6 +115,7 @@ class ClientControllerTest {
     }
 
     @Test
+    @WithMockUser
     void updateClient() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
@@ -106,6 +130,7 @@ class ClientControllerTest {
     }
 
     @Test
+    @WithMockUser
     void findClient() throws Exception {
 
         when(clientService.findClient(1L)).thenReturn(client);
@@ -114,12 +139,14 @@ class ClientControllerTest {
     }
 
     @Test
+    @WithMockUser
     void findAllClients() throws Exception {
         when(clientService.findAllClients()).thenReturn(clientList);
         this.mockMvc.perform(get("/client/findAll")).andDo(print()).andExpect(status().isOk());
     }
 
     @Test
+    @WithMockUser
     void deleteClient() throws Exception {
         when(clientService.deleteClient(anyLong())).thenReturn(client);
         this.mockMvc.perform(delete("/client/delete/" + "1")).andDo(print()).andExpect(status().isOk());
