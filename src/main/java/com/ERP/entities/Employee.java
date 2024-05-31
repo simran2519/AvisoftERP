@@ -17,12 +17,14 @@ import java.util.List;
 public class Employee {
 
     @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private String email;
     private String role;
+    private String password;
 
     @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL)
     private List<Task>task = new ArrayList<>();

@@ -1,6 +1,7 @@
 package com.ERP.controllers;
 
 
+import com.ERP.entities.Department;
 import com.ERP.entities.Employee;
 import com.ERP.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,10 @@ public class EmployeeController {
     @Autowired
     public EmployeeService employeeService;
 
-     @PostMapping("/add")
-     public ResponseEntity<Employee>createEmployee(@RequestBody Employee employee)
+     @PostMapping("/add/{id}")
+     public ResponseEntity<Employee>createEmployee(@RequestBody Employee employee, @PathVariable Long id)
      {
-         return ResponseEntity.ok(employeeService.createEmployee(employee));
+         return ResponseEntity.ok(employeeService.createEmployee(employee,id));
      }
 
      @DeleteMapping("/deleteById/{id}")

@@ -2,8 +2,12 @@ package com.ERP.services;
 
 
 import com.ERP.dtos.EmployeeDto;
+import com.ERP.entities.Department;
 import com.ERP.entities.Employee;
+import com.ERP.entities.Authentication;
+import com.ERP.repositories.DepartmentRepository;
 import com.ERP.repositories.EmployeeRepository;
+import com.ERP.repositories.UserEntityRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,17 +21,31 @@ import java.util.Optional;
 public class EmployeeService {
 
     @Autowired
+    private UserEntityRepository userEntityRepository;
+
+    @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private DepartmentRepository departmentRepository;
 
     public EmployeeService(EmployeeRepository employeeRepository) {
       this.employeeRepository = employeeRepository;
     }
 
-    public Employee createEmployee(Employee employee) {
+    public Employee createEmployee(Employee employee,Long id) {
 
+
+      Optional <Department> department = departmentRepository.findById(id);
 //        Employee employee = new Employee();
 //        BeanUtils.copyProperties(employeeDto,employee);
+        Authentication authentication = new Authentication();
+        authentication.setUsername(employee.getName());
+        authentication.setPassword(employee.getPassword());
+        authentication.setRole("EMPLOYEE");
+        employee.setDepartment(department.get());
         employeeRepository.save(employee);
+
         return employee;
     }
 

@@ -64,7 +64,7 @@ public class EmployeeControllerTest {
         ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
         String requestJson=ow.writeValueAsString(employee1);
 
-        when(employeeService.createEmployee(employee1)).thenReturn(employee1);
+        when(employeeService.createEmployee(employee1,1L)).thenReturn(employee1);
         this.mockMvc.perform(post("/employee/add")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
@@ -105,7 +105,7 @@ public class EmployeeControllerTest {
         ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
         String requestJson=ow.writeValueAsString(employee1);
 
-        when(employeeService.createEmployee(employee1)).thenReturn(employee1);
+        when(employeeService.createEmployee(employee1,1L)).thenReturn(employee1);
         this.mockMvc.perform(post("/employee/add")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
