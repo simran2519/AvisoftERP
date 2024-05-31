@@ -19,6 +19,8 @@ public class EmployeeDto {
     private String name;
     @NotNull(message = "Email cannot be empty")
     private String email;
+    @NotNull(message = "Password cannot be empty")
+    private String password;
     @NotNull(message = "Role cannot be empty")
     private String role;
     @NotNull(message = "Department cannot be empty")

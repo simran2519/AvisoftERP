@@ -1,313 +1,93 @@
-24-05-28 16:56:00.747 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet '' 
-24-05-28 16:56:00.749 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet '' 
-24-05-28 16:56:00.752 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms 
-24-05-28 16:56:00.781 [main] INFO  c.E.c.AssetControllerTest - Started AssetControllerTest in 2.549 seconds (process running for 4.503) 
-24-05-28 16:56:00.843 [main] INFO  c.E.c.AssetControllerTest - Starting testDeleteAsset 
-24-05-28 16:56:01.060 [main] INFO  c.E.c.AssetControllerTest - testDeleteAsset passed 
-24-05-28 16:56:01.077 [main] INFO  c.E.c.AssetControllerTest - Starting testUpdateAsset 
-24-05-28 16:56:01.145 [main] INFO  c.E.c.AssetControllerTest - testUpdateAsset passed 
-24-05-28 16:56:01.154 [main] INFO  c.E.c.AssetControllerTest - Starting testCreateAsset 
-24-05-28 16:56:01.158 [main] INFO  c.E.c.AssetControllerTest - testCreateAsset passed 
-24-05-28 16:56:01.174 [main] INFO  c.E.c.AssetControllerTest - Starting testAddAllAssets 
-24-05-28 16:56:01.222 [main] INFO  c.E.c.AssetControllerTest - testAddAllAssets passed 
-24-05-28 16:56:01.230 [main] INFO  c.E.c.AssetControllerTest - Starting getAllAssetsTest 
-24-05-28 16:56:01.267 [main] INFO  c.E.c.AssetControllerTest - getAllAssetsTest passed 
-24-05-28 16:56:01.275 [main] INFO  c.E.c.AssetControllerTest - Starting getAssetTest 
-24-05-28 16:56:01.279 [main] INFO  c.E.c.AssetControllerTest - getAssetTest passed 
-24-05-28 16:56:01.560 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.controllersTest.ClientControllerTest]: ClientControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:01.579 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.controllersTest.ClientControllerTest 
-24-05-28 16:56:01.588 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running 
-24-05-28 16:56:01.651 [main] INFO  c.E.c.ClientControllerTest - Starting ClientControllerTest using Java 21.0.2 with PID 28188 (started by ASUS in C:\Users\ASUS\OneDrive\Desktop\AvisoftERP) 
-24-05-28 16:56:01.651 [main] INFO  c.E.c.ClientControllerTest - No active profile set, falling back to 1 default profile: "default" 
-24-05-28 16:56:02.004 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet '' 
-24-05-28 16:56:02.004 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet '' 
-24-05-28 16:56:02.004 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms 
-24-05-28 16:56:02.011 [main] INFO  c.E.c.ClientControllerTest - Started ClientControllerTest in 0.423 seconds (process running for 5.733) 
-24-05-28 16:56:02.149 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.controllersTest.DepartmentControllerTest]: DepartmentControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:02.168 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.controllersTest.DepartmentControllerTest 
-24-05-28 16:56:02.176 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running 
-24-05-28 16:56:02.204 [main] INFO  c.E.c.DepartmentControllerTest - Starting DepartmentControllerTest using Java 21.0.2 with PID 28188 (started by ASUS in C:\Users\ASUS\OneDrive\Desktop\AvisoftERP) 
-24-05-28 16:56:02.204 [main] INFO  c.E.c.DepartmentControllerTest - No active profile set, falling back to 1 default profile: "default" 
-24-05-28 16:56:02.501 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet '' 
-24-05-28 16:56:02.501 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet '' 
-24-05-28 16:56:02.502 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms 
-24-05-28 16:56:02.507 [main] INFO  c.E.c.DepartmentControllerTest - Started DepartmentControllerTest in 0.332 seconds (process running for 6.228) 
-24-05-28 16:56:02.513 [main] INFO  c.E.c.DepartmentControllerTest - Starting testDeleteDepartment 
-24-05-28 16:56:02.526 [main] INFO  c.E.c.DepartmentControllerTest - testDeleteDepartment passed 
-24-05-28 16:56:02.533 [main] INFO  c.E.c.DepartmentControllerTest - Starting getAllDepartmentsTest 
-24-05-28 16:56:02.538 [main] INFO  c.E.c.DepartmentControllerTest - getAllDepartmentsTest passed 
-24-05-28 16:56:02.545 [main] INFO  c.E.c.DepartmentControllerTest - Starting testUpdateDepartment 
-24-05-28 16:56:02.554 [main] INFO  c.E.c.DepartmentControllerTest - testUpdateDepartment passed 
-24-05-28 16:56:02.561 [main] INFO  c.E.c.DepartmentControllerTest - Starting getDepartmentTest 
-24-05-28 16:56:02.564 [main] INFO  c.E.c.DepartmentControllerTest - getDepartmentTest passed 
-24-05-28 16:56:02.572 [main] INFO  c.E.c.DepartmentControllerTest - Starting testAddAllDepartments 
-24-05-28 16:56:02.602 [main] INFO  c.E.c.DepartmentControllerTest - testAddAllDepartments passed 
-24-05-28 16:56:02.610 [main] INFO  c.E.c.DepartmentControllerTest - Starting testCreateDepartment 
-24-05-28 16:56:02.615 [main] INFO  c.E.c.DepartmentControllerTest - testCreateDepartment passed 
-24-05-28 16:56:02.684 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.controllersTest.EmployeeControllerTest]: EmployeeControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:02.691 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.controllersTest.EmployeeControllerTest 
-24-05-28 16:56:02.696 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running 
-24-05-28 16:56:02.718 [main] INFO  c.E.c.EmployeeControllerTest - Starting EmployeeControllerTest using Java 21.0.2 with PID 28188 (started by ASUS in C:\Users\ASUS\OneDrive\Desktop\AvisoftERP) 
-24-05-28 16:56:02.718 [main] INFO  c.E.c.EmployeeControllerTest - No active profile set, falling back to 1 default profile: "default" 
-24-05-28 16:56:02.974 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet '' 
-24-05-28 16:56:02.974 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet '' 
-24-05-28 16:56:02.974 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms 
-24-05-28 16:56:02.978 [main] INFO  c.E.c.EmployeeControllerTest - Started EmployeeControllerTest in 0.284 seconds (process running for 6.699) 
-24-05-28 16:56:03.152 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.controllersTest.InvoiceControllerTest]: InvoiceControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:03.159 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.controllersTest.InvoiceControllerTest 
-24-05-28 16:56:03.164 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running 
-24-05-28 16:56:03.185 [main] INFO  c.E.c.InvoiceControllerTest - Starting InvoiceControllerTest using Java 21.0.2 with PID 28188 (started by ASUS in C:\Users\ASUS\OneDrive\Desktop\AvisoftERP) 
-24-05-28 16:56:03.185 [main] INFO  c.E.c.InvoiceControllerTest - No active profile set, falling back to 1 default profile: "default" 
-24-05-28 16:56:03.431 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet '' 
-24-05-28 16:56:03.432 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet '' 
-24-05-28 16:56:03.432 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms 
-24-05-28 16:56:03.437 [main] INFO  c.E.c.InvoiceControllerTest - Started InvoiceControllerTest in 0.273 seconds (process running for 7.158) 
-24-05-28 16:56:03.442 [main] INFO  c.E.c.InvoiceControllerTest - Starting testUpdateInvoice 
-24-05-28 16:56:03.464 [main] INFO  c.E.c.InvoiceControllerTest - testUpdateInvoice passed 
-24-05-28 16:56:03.468 [main] INFO  c.E.c.InvoiceControllerTest - Starting getInvoiceTest 
-24-05-28 16:56:03.473 [main] INFO  c.E.c.InvoiceControllerTest - getInvoiceTest passed 
-24-05-28 16:56:03.478 [main] INFO  c.E.c.InvoiceControllerTest - Starting getAllInvoicesTest 
-24-05-28 16:56:03.482 [main] INFO  c.E.c.InvoiceControllerTest - getAllInvoicesTest passed 
-24-05-28 16:56:03.488 [main] INFO  c.E.c.InvoiceControllerTest - Starting testDeleteInvoice 
-24-05-28 16:56:03.491 [main] INFO  c.E.c.InvoiceControllerTest - testDeleteInvoice passed 
-24-05-28 16:56:03.498 [main] INFO  c.E.c.InvoiceControllerTest - Starting testAddAllInvoices 
-24-05-28 16:56:03.519 [main] INFO  c.E.c.InvoiceControllerTest - testAddAllInvoices passed 
-24-05-28 16:56:03.526 [main] INFO  c.E.c.InvoiceControllerTest - Starting testCreateInvoice 
-24-05-28 16:56:03.531 [main] INFO  c.E.c.InvoiceControllerTest - testCreateInvoice passed 
-24-05-28 16:56:03.593 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.controllersTest.LeavesControllerTest]: LeavesControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:03.599 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.controllersTest.LeavesControllerTest 
-24-05-28 16:56:03.605 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running 
-24-05-28 16:56:03.623 [main] INFO  c.E.c.LeavesControllerTest - Starting LeavesControllerTest using Java 21.0.2 with PID 28188 (started by ASUS in C:\Users\ASUS\OneDrive\Desktop\AvisoftERP) 
-24-05-28 16:56:03.623 [main] INFO  c.E.c.LeavesControllerTest - No active profile set, falling back to 1 default profile: "default" 
-24-05-28 16:56:03.851 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet '' 
-24-05-28 16:56:03.851 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet '' 
-24-05-28 16:56:03.852 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms 
-24-05-28 16:56:03.856 [main] INFO  c.E.c.LeavesControllerTest - Started LeavesControllerTest in 0.251 seconds (process running for 7.577) 
-24-05-28 16:56:03.929 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.controllersTest.ProjectControllerTest]: ProjectControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:03.952 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.controllersTest.ProjectControllerTest 
-24-05-28 16:56:03.957 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running 
-24-05-28 16:56:03.975 [main] INFO  c.E.c.ProjectControllerTest - Starting ProjectControllerTest using Java 21.0.2 with PID 28188 (started by ASUS in C:\Users\ASUS\OneDrive\Desktop\AvisoftERP) 
-24-05-28 16:56:03.975 [main] INFO  c.E.c.ProjectControllerTest - No active profile set, falling back to 1 default profile: "default" 
-24-05-28 16:56:04.210 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet '' 
-24-05-28 16:56:04.210 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet '' 
-24-05-28 16:56:04.210 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms 
-24-05-28 16:56:04.214 [main] INFO  c.E.c.ProjectControllerTest - Started ProjectControllerTest in 0.257 seconds (process running for 7.935) 
-24-05-28 16:56:04.218 [main] INFO  c.E.c.ProjectControllerTest - Starting getProjectTest 
-24-05-28 16:56:04.229 [main] INFO  c.E.c.ProjectControllerTest - getProjectTest passed 
-24-05-28 16:56:04.235 [main] INFO  c.E.c.ProjectControllerTest - Starting testAddAllProjects 
-24-05-28 16:56:04.262 [main] INFO  c.E.c.ProjectControllerTest - testAddAllProjects passed 
-24-05-28 16:56:04.268 [main] INFO  c.E.c.ProjectControllerTest - Starting testCreateProject 
-24-05-28 16:56:04.273 [main] INFO  c.E.c.ProjectControllerTest - testCreateProject passed 
-24-05-28 16:56:04.279 [main] INFO  c.E.c.ProjectControllerTest - Starting testUpdateProject 
-24-05-28 16:56:04.284 [main] INFO  c.E.c.ProjectControllerTest - testUpdateProject passed 
-24-05-28 16:56:04.290 [main] INFO  c.E.c.ProjectControllerTest - Starting getAllProjectsTest 
-24-05-28 16:56:04.293 [main] INFO  c.E.c.ProjectControllerTest - getAllProjectsTest passed 
-24-05-28 16:56:04.300 [main] INFO  c.E.c.ProjectControllerTest - Starting testDeleteProject 
-24-05-28 16:56:04.303 [main] INFO  c.E.c.ProjectControllerTest - testDeleteProject passed 
-24-05-28 16:56:04.432 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.controllersTest.SalaryStructureControllerTest]: SalaryStructureControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:04.437 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.controllersTest.SalaryStructureControllerTest 
-24-05-28 16:56:04.439 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running 
-24-05-28 16:56:04.459 [main] INFO  c.E.c.SalaryStructureControllerTest - Starting SalaryStructureControllerTest using Java 21.0.2 with PID 28188 (started by ASUS in C:\Users\ASUS\OneDrive\Desktop\AvisoftERP) 
-24-05-28 16:56:04.459 [main] INFO  c.E.c.SalaryStructureControllerTest - No active profile set, falling back to 1 default profile: "default" 
-24-05-28 16:56:04.685 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet '' 
-24-05-28 16:56:04.685 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet '' 
-24-05-28 16:56:04.685 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms 
-24-05-28 16:56:04.689 [main] INFO  c.E.c.SalaryStructureControllerTest - Started SalaryStructureControllerTest in 0.249 seconds (process running for 8.41) 
-24-05-28 16:56:04.753 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.controllersTest.TaskControllerTest]: TaskControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:04.760 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.controllersTest.TaskControllerTest 
-24-05-28 16:56:04.763 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running 
-24-05-28 16:56:04.784 [main] INFO  c.E.c.TaskControllerTest - Starting TaskControllerTest using Java 21.0.2 with PID 28188 (started by ASUS in C:\Users\ASUS\OneDrive\Desktop\AvisoftERP) 
-24-05-28 16:56:04.785 [main] INFO  c.E.c.TaskControllerTest - No active profile set, falling back to 1 default profile: "default" 
-24-05-28 16:56:05.007 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet '' 
-24-05-28 16:56:05.007 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet '' 
-24-05-28 16:56:05.007 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms 
-24-05-28 16:56:05.010 [main] INFO  c.E.c.TaskControllerTest - Started TaskControllerTest in 0.247 seconds (process running for 8.732) 
-24-05-28 16:56:05.065 [main] INFO  com.ERP.entitiesTest.AssetTest - Testing getters 
-24-05-28 16:56:05.068 [main] INFO  com.ERP.entitiesTest.AssetTest - Testing setters 
-24-05-28 16:56:05.071 [main] INFO  com.ERP.entitiesTest.AssetTest - Testing constructor 
-24-05-28 16:56:05.121 [main] INFO  com.ERP.entitiesTest.ClientTest - Testing getters 
-24-05-28 16:56:05.124 [main] INFO  com.ERP.entitiesTest.ClientTest - Testing setters 
-24-05-28 16:56:05.127 [main] INFO  com.ERP.entitiesTest.ClientTest - Testing constructor 
-24-05-28 16:56:05.232 [main] INFO  com.ERP.entitiesTest.DepartmentTest - Setting up test environment 
-24-05-28 16:56:05.233 [main] INFO  com.ERP.entitiesTest.DepartmentTest - Testing getters 
-24-05-28 16:56:05.236 [main] INFO  com.ERP.entitiesTest.DepartmentTest - Setting up test environment 
-24-05-28 16:56:05.237 [main] INFO  com.ERP.entitiesTest.DepartmentTest - Testing setters 
-24-05-28 16:56:05.240 [main] INFO  com.ERP.entitiesTest.DepartmentTest - Setting up test environment 
-24-05-28 16:56:05.241 [main] INFO  com.ERP.entitiesTest.DepartmentTest - Testing constructor 
-24-05-28 16:56:05.285 [main] INFO  com.ERP.entitiesTest.EmployeeTest - Testing getters 
-24-05-28 16:56:05.287 [main] INFO  com.ERP.entitiesTest.EmployeeTest - Testing setters 
-24-05-28 16:56:05.288 [main] INFO  com.ERP.entitiesTest.EmployeeTest - Testing constructor 
-24-05-28 16:56:05.294 [main] INFO  com.ERP.entitiesTest.InvoiceTest - Testing getters 
-24-05-28 16:56:05.297 [main] INFO  com.ERP.entitiesTest.InvoiceTest - Testing setters 
-24-05-28 16:56:05.300 [main] INFO  com.ERP.entitiesTest.InvoiceTest - Testing constructor 
-24-05-28 16:56:05.351 [main] INFO  com.ERP.entitiesTest.LeavesTest - Testing getters 
-24-05-28 16:56:05.354 [main] INFO  com.ERP.entitiesTest.LeavesTest - Testing setters 
-24-05-28 16:56:05.358 [main] INFO  com.ERP.entitiesTest.LeavesTest - Testing constructor 
-24-05-28 16:56:05.569 [main] INFO  com.ERP.entitiesTest.ProjectTest - Setting up test environment 
-24-05-28 16:56:05.570 [main] INFO  com.ERP.entitiesTest.ProjectTest - Testing getters 
-24-05-28 16:56:05.574 [main] INFO  com.ERP.entitiesTest.ProjectTest - Setting up test environment 
-24-05-28 16:56:05.575 [main] INFO  com.ERP.entitiesTest.ProjectTest - Testing setters 
-24-05-28 16:56:05.579 [main] INFO  com.ERP.entitiesTest.ProjectTest - Setting up test environment 
-24-05-28 16:56:05.580 [main] INFO  com.ERP.entitiesTest.ProjectTest - Testing constructor 
-24-05-28 16:56:05.619 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.ErpApplicationTests]: ErpApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:05.626 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.ErpApplicationTests 
-24-05-28 16:56:05.633 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running 
-24-05-28 16:56:05.650 [main] INFO  com.ERP.ErpApplicationTests - Starting ErpApplicationTests using Java 21.0.2 with PID 28188 (started by ASUS in C:\Users\ASUS\OneDrive\Desktop\AvisoftERP) 
-24-05-28 16:56:05.650 [main] INFO  com.ERP.ErpApplicationTests - No active profile set, falling back to 1 default profile: "default" 
-24-05-28 16:56:06.039 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
-24-05-28 16:56:06.116 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 69 ms. Found 11 JPA repository interfaces. 
-24-05-28 16:56:06.434 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
-24-05-28 16:56:06.550 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final 
-24-05-28 16:56:06.599 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
-24-05-28 16:56:06.723 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
-24-05-28 16:56:06.752 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
-24-05-28 16:56:07.547 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@c18ee56 
-24-05-28 16:56:07.552 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
-24-05-28 16:56:07.637 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
-24-05-28 16:56:07.638 [main] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead 
-24-05-28 16:56:08.647 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
-24-05-28 16:56:10.013 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
-24-05-28 16:56:10.760 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
-24-05-28 16:56:11.039 [main] INFO  com.ERP.ErpApplicationTests - Started ErpApplicationTests in 5.406 seconds (process running for 14.76) 
-24-05-28 16:56:11.049 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.repositoriesTest.AssetRepositoryTest]: AssetRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:11.079 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.repositoriesTest.AssetRepositoryTest 
-24-05-28 16:56:11.090 [main] INFO  c.E.r.AssetRepositoryTest - Starting addAll 
-24-05-28 16:56:11.556 [main] INFO  c.E.r.AssetRepositoryTest - addAll passed 
-24-05-28 16:56:11.563 [main] INFO  c.E.r.AssetRepositoryTest - Starting deleteAsset 
-24-05-28 16:56:12.458 [main] INFO  c.E.r.AssetRepositoryTest - deleteAsset passed 
-24-05-28 16:56:12.464 [main] INFO  c.E.r.AssetRepositoryTest - Starting findAllAssets 
-24-05-28 16:56:12.464 [main] INFO  c.E.r.AssetRepositoryTest - Starting addAll 
-24-05-28 16:56:12.789 [main] INFO  c.E.r.AssetRepositoryTest - addAll passed 
-24-05-28 16:56:13.041 [main] INFO  c.E.r.AssetRepositoryTest - findAllAssets passed 
-24-05-28 16:56:13.051 [main] INFO  c.E.r.AssetRepositoryTest - Starting saveAssetTest 
-24-05-28 16:56:13.247 [main] INFO  c.E.r.AssetRepositoryTest - saveAssetTest passed 
-24-05-28 16:56:13.256 [main] INFO  c.E.r.AssetRepositoryTest - Starting updateAsset 
-24-05-28 16:56:13.925 [main] INFO  c.E.r.AssetRepositoryTest - updateAsset passed 
-24-05-28 16:56:13.930 [main] INFO  c.E.r.AssetRepositoryTest - Starting findAssetById 
-24-05-28 16:56:14.353 [main] INFO  c.E.r.AssetRepositoryTest - findAssetById passed 
-24-05-28 16:56:14.388 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.repositoriesTest.ClientRepositoryTest]: ClientRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:14.389 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.repositoriesTest.ClientRepositoryTest 
-24-05-28 16:56:16.750 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.repositoriesTest.DepartmentRepositoryTest]: DepartmentRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:16.752 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.repositoriesTest.DepartmentRepositoryTest 
-24-05-28 16:56:16.763 [main] INFO  c.E.r.DepartmentRepositoryTest - Starting addAll 
-24-05-28 16:56:17.040 [main] INFO  c.E.r.DepartmentRepositoryTest - addAll passed 
-24-05-28 16:56:17.049 [main] INFO  c.E.r.DepartmentRepositoryTest - Starting deleteDepartment 
-24-05-28 16:56:18.088 [main] INFO  c.E.r.DepartmentRepositoryTest - deleteDepartment passed 
-24-05-28 16:56:18.097 [main] INFO  c.E.r.DepartmentRepositoryTest - Starting updateDepartment 
-24-05-28 16:56:18.742 [main] INFO  c.E.r.DepartmentRepositoryTest - updateDepartment passed 
-24-05-28 16:56:18.752 [main] INFO  c.E.r.DepartmentRepositoryTest - Starting saveDepartmentTest 
-24-05-28 16:56:18.946 [main] INFO  c.E.r.DepartmentRepositoryTest - saveDepartmentTest passed 
-24-05-28 16:56:18.954 [main] INFO  c.E.r.DepartmentRepositoryTest - Starting findDepartmentById 
-24-05-28 16:56:19.463 [main] INFO  c.E.r.DepartmentRepositoryTest - findDepartmentById passed 
-24-05-28 16:56:19.472 [main] INFO  c.E.r.DepartmentRepositoryTest - Starting findAllDepartments 
-24-05-28 16:56:19.714 [main] INFO  c.E.r.DepartmentRepositoryTest - findAllDepartments passed 
-24-05-28 16:56:19.787 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.repositoriesTest.EmployeeRepositoryTest]: EmployeeRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:19.809 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.repositoriesTest.EmployeeRepositoryTest 
-24-05-28 16:56:19.813 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running 
-24-05-28 16:56:19.865 [main] INFO  c.E.r.EmployeeRepositoryTest - Starting EmployeeRepositoryTest using Java 21.0.2 with PID 28188 (started by ASUS in C:\Users\ASUS\OneDrive\Desktop\AvisoftERP) 
-24-05-28 16:56:19.865 [main] INFO  c.E.r.EmployeeRepositoryTest - No active profile set, falling back to 1 default profile: "default" 
-24-05-28 16:56:19.942 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
-24-05-28 16:56:19.965 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 22 ms. Found 11 JPA repository interfaces. 
-24-05-28 16:56:20.005 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
-24-05-28 16:56:20.008 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
-24-05-28 16:56:20.013 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
-24-05-28 16:56:20.014 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting... 
-24-05-28 16:56:20.501 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3cea551d 
-24-05-28 16:56:20.502 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed. 
-24-05-28 16:56:20.502 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
-24-05-28 16:56:20.502 [main] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead 
-24-05-28 16:56:20.781 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
-24-05-28 16:56:22.026 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
-24-05-28 16:56:22.099 [main] INFO  c.E.r.EmployeeRepositoryTest - Started EmployeeRepositoryTest in 2.286 seconds (process running for 25.82) 
-24-05-28 16:56:23.650 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.repositoriesTest.InvoiceRepositoryTest]: InvoiceRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:23.654 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.repositoriesTest.InvoiceRepositoryTest 
-24-05-28 16:56:23.667 [main] INFO  c.E.r.InvoiceRepositoryTest - Starting findAllInvoices 
-24-05-28 16:56:23.667 [main] INFO  c.E.r.InvoiceRepositoryTest - Starting addAll 
-24-05-28 16:56:23.952 [main] INFO  c.E.r.InvoiceRepositoryTest - addAll passed 
-24-05-28 16:56:24.169 [main] INFO  c.E.r.InvoiceRepositoryTest - findAllInvoices passed 
-24-05-28 16:56:24.177 [main] INFO  c.E.r.InvoiceRepositoryTest - Starting addAll 
-24-05-28 16:56:24.388 [main] INFO  c.E.r.InvoiceRepositoryTest - addAll passed 
-24-05-28 16:56:24.397 [main] INFO  c.E.r.InvoiceRepositoryTest - Starting findByNameTest 
-24-05-28 16:56:24.902 [main] INFO  c.E.r.InvoiceRepositoryTest - findByNameTest passed 
-24-05-28 16:56:24.911 [main] INFO  c.E.r.InvoiceRepositoryTest - Starting updateInvoice 
-24-05-28 16:56:25.721 [main] INFO  c.E.r.InvoiceRepositoryTest - updateInvoice passed 
-24-05-28 16:56:25.728 [main] INFO  c.E.r.InvoiceRepositoryTest - Starting saveInvoiceTest 
-24-05-28 16:56:25.915 [main] INFO  c.E.r.InvoiceRepositoryTest - saveInvoiceTest passed 
-24-05-28 16:56:25.923 [main] INFO  c.E.r.InvoiceRepositoryTest - Starting findInvoiceById 
-24-05-28 16:56:26.346 [main] INFO  c.E.r.InvoiceRepositoryTest - findInvoiceById passed 
-24-05-28 16:56:26.353 [main] INFO  c.E.r.InvoiceRepositoryTest - Starting deleteInvoice 
-24-05-28 16:56:26.966 [main] INFO  c.E.r.InvoiceRepositoryTest - deleteInvoice passed 
-24-05-28 16:56:27.056 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.repositoriesTest.LeavesRepositoryTest]: LeavesRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:27.068 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.repositoriesTest.LeavesRepositoryTest 
-24-05-28 16:56:28.032 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.repositoriesTest.ProjectRepositoryTest]: ProjectRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:28.035 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.repositoriesTest.ProjectRepositoryTest 
-24-05-28 16:56:28.046 [main] INFO  c.E.r.ProjectRepositoryTest - Starting updateProject 
-24-05-28 16:56:29.390 [main] INFO  c.E.r.ProjectRepositoryTest - updateProject passed 
-24-05-28 16:56:29.397 [main] INFO  c.E.r.ProjectRepositoryTest - Starting addAll 
-24-05-28 16:56:29.679 [main] INFO  c.E.r.ProjectRepositoryTest - addAll passed 
-24-05-28 16:56:29.686 [main] INFO  c.E.r.ProjectRepositoryTest - Starting findByNameTest 
-24-05-28 16:56:30.718 [main] INFO  c.E.r.ProjectRepositoryTest - findByNameTest passed 
-24-05-28 16:56:30.727 [main] INFO  c.E.r.ProjectRepositoryTest - Starting deleteProject 
-24-05-28 16:56:33.030 [main] INFO  c.E.r.ProjectRepositoryTest - deleteProject passed 
-24-05-28 16:56:33.039 [main] INFO  c.E.r.ProjectRepositoryTest - Starting saveProjectTest 
-24-05-28 16:56:33.218 [main] INFO  c.E.r.ProjectRepositoryTest - saveProjectTest passed 
-24-05-28 16:56:33.226 [main] INFO  c.E.r.ProjectRepositoryTest - Starting findProjectById 
-24-05-28 16:56:34.094 [main] INFO  c.E.r.ProjectRepositoryTest - findProjectById passed 
-24-05-28 16:56:34.102 [main] INFO  c.E.r.ProjectRepositoryTest - Starting findAllProjects 
-24-05-28 16:56:34.872 [main] INFO  c.E.r.ProjectRepositoryTest - findAllProjects passed 
-24-05-28 16:56:34.943 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.repositoriesTest.SalaryStructureRepositoryTest]: SalaryStructureRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-05-28 16:56:34.955 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.repositoriesTest.SalaryStructureRepositoryTest 
-24-05-28 16:56:35.639 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting findAllAssetTest 
-24-05-28 16:56:35.644 [main] INFO  c.ERP.servicesTest.AssetServiceTest - findAllAssetTest passed 
-24-05-28 16:56:35.647 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting updateAssetTest 
-24-05-28 16:56:35.651 [main] INFO  c.ERP.servicesTest.AssetServiceTest - updateAssetTest passed 
-24-05-28 16:56:35.653 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting createAllAssetsTest 
-24-05-28 16:56:35.656 [main] INFO  c.ERP.servicesTest.AssetServiceTest - createAllAssetsTest passed 
-24-05-28 16:56:35.659 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting createAssetTest 
-24-05-28 16:56:35.663 [main] INFO  c.ERP.servicesTest.AssetServiceTest - createAssetTest passed 
-24-05-28 16:56:35.666 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting findAssetTest 
-24-05-28 16:56:35.668 [main] INFO  c.ERP.servicesTest.AssetServiceTest - findAssetTest passed 
-24-05-28 16:56:35.674 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting deleteAssetTest 
-24-05-28 16:56:35.677 [main] INFO  c.ERP.servicesTest.AssetServiceTest - deleteAssetTest passed 
-24-05-28 16:56:35.957 [main] INFO  c.E.s.DepartmentServiceTest - Starting updateDepartmentTest 
-24-05-28 16:56:35.959 [main] INFO  c.E.s.DepartmentServiceTest - updateDepartmentTest passed 
-24-05-28 16:56:35.961 [main] INFO  c.E.s.DepartmentServiceTest - Starting createDepartmentTest 
-24-05-28 16:56:35.966 [main] INFO  c.E.s.DepartmentServiceTest - createDepartmentTest passed 
-24-05-28 16:56:35.969 [main] INFO  c.E.s.DepartmentServiceTest - Starting deleteDepartmentTest 
-24-05-28 16:56:35.970 [main] INFO  c.E.s.DepartmentServiceTest - deleteDepartmentTest passed 
-24-05-28 16:56:35.972 [main] INFO  c.E.s.DepartmentServiceTest - Starting findDepartmentTest 
-24-05-28 16:56:35.974 [main] INFO  c.E.s.DepartmentServiceTest - findDepartmentTest passed 
-24-05-28 16:56:35.975 [main] INFO  c.E.s.DepartmentServiceTest - Starting createAllDepartmentsTest 
-24-05-28 16:56:35.981 [main] INFO  c.E.s.DepartmentServiceTest - createAllDepartmentsTest passed 
-24-05-28 16:56:35.983 [main] INFO  c.E.s.DepartmentServiceTest - Starting findAllDepartmentTest 
-24-05-28 16:56:35.985 [main] INFO  c.E.s.DepartmentServiceTest - findAllDepartmentTest passed 
-24-05-28 16:56:36.206 [main] INFO  c.E.servicesTest.InvoiceServiceTest - Starting updateInvoiceTest 
-24-05-28 16:56:36.208 [main] INFO  c.E.servicesTest.InvoiceServiceTest - updateInvoiceTest passed 
-24-05-28 16:56:36.211 [main] INFO  c.E.servicesTest.InvoiceServiceTest - Starting createAllInvoicesTest 
-24-05-28 16:56:36.220 [main] INFO  c.E.servicesTest.InvoiceServiceTest - createAllInvoicesTest passed 
-24-05-28 16:56:36.224 [main] INFO  c.E.servicesTest.InvoiceServiceTest - Starting deleteInvoiceTest 
-24-05-28 16:56:36.226 [main] INFO  c.E.servicesTest.InvoiceServiceTest - deleteInvoiceTest passed 
-24-05-28 16:56:36.229 [main] INFO  c.E.servicesTest.InvoiceServiceTest - Starting findAllInvoiceTest 
-24-05-28 16:56:36.231 [main] INFO  c.E.servicesTest.InvoiceServiceTest - findAllInvoiceTest passed 
-24-05-28 16:56:36.234 [main] INFO  c.E.servicesTest.InvoiceServiceTest - Starting createInvoiceTest 
-24-05-28 16:56:36.243 [main] INFO  c.E.servicesTest.InvoiceServiceTest - createInvoiceTest passed 
-24-05-28 16:56:36.246 [main] INFO  c.E.servicesTest.InvoiceServiceTest - Starting findInvoiceTest 
-24-05-28 16:56:36.248 [main] INFO  c.E.servicesTest.InvoiceServiceTest - findInvoiceTest passed 
-24-05-28 16:56:36.496 [main] INFO  c.E.servicesTest.ProjectServiceTest - Starting updateProjectTest 
-24-05-28 16:56:36.499 [main] INFO  c.E.servicesTest.ProjectServiceTest - updateProjectTest passed 
-24-05-28 16:56:36.502 [main] INFO  c.E.servicesTest.ProjectServiceTest - Starting deleteProjectTest 
-24-05-28 16:56:36.504 [main] INFO  c.E.servicesTest.ProjectServiceTest - deleteProjectTest passed 
-24-05-28 16:56:36.507 [main] INFO  c.E.servicesTest.ProjectServiceTest - Starting findAllProjectTest 
-24-05-28 16:56:36.509 [main] INFO  c.E.servicesTest.ProjectServiceTest - findAllProjectTest passed 
-24-05-28 16:56:36.512 [main] INFO  c.E.servicesTest.ProjectServiceTest - Starting createProjectTest 
-24-05-28 16:56:36.518 [main] INFO  c.E.servicesTest.ProjectServiceTest - createProjectTest passed 
-24-05-28 16:56:36.522 [main] INFO  c.E.servicesTest.ProjectServiceTest - Starting findProjectTest 
-24-05-28 16:56:36.524 [main] INFO  c.E.servicesTest.ProjectServiceTest - findProjectTest passed 
-24-05-28 16:56:36.526 [main] INFO  c.E.servicesTest.ProjectServiceTest - Starting createAllProjectsTest 
-24-05-28 16:56:36.534 [main] INFO  c.E.servicesTest.ProjectServiceTest - createAllProjectsTest passed 
-24-05-28 16:56:37.044 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
-24-05-28 16:56:37.046 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
-24-05-28 16:56:37.408 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 
-24-05-28 16:56:37.409 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
-24-05-28 16:56:37.410 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated... 
-24-05-28 16:56:37.749 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed. 
+24-05-29 11:04:00.056 [main] INFO  c.E.r.EmployeeRepositoryTest - Started EmployeeRepositoryTest in 3.704 seconds (process running for 31.518) 
+24-05-29 11:04:02.406 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.repositoriesTest.InvoiceRepositoryTest]: InvoiceRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
+24-05-29 11:04:02.407 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.repositoriesTest.InvoiceRepositoryTest 
+24-05-29 11:04:02.414 [main] INFO  c.E.r.InvoiceRepositoryTest - Starting findAllInvoices 
+24-05-29 11:04:02.414 [main] INFO  c.E.r.InvoiceRepositoryTest - Starting addAll 
+24-05-29 11:04:03.028 [main] INFO  c.E.r.InvoiceRepositoryTest - addAll passed 
+24-05-29 11:04:03.380 [main] INFO  c.E.r.InvoiceRepositoryTest - findAllInvoices passed 
+24-05-29 11:04:03.385 [main] INFO  c.E.r.InvoiceRepositoryTest - Starting addAll 
+24-05-29 11:04:03.677 [main] INFO  c.E.r.InvoiceRepositoryTest - addAll passed 
+24-05-29 11:04:03.681 [main] INFO  c.E.r.InvoiceRepositoryTest - Starting findByNameTest 
+24-05-29 11:04:04.191 [main] INFO  c.E.r.InvoiceRepositoryTest - findByNameTest passed 
+24-05-29 11:04:04.196 [main] INFO  c.E.r.InvoiceRepositoryTest - Starting updateInvoice 
+24-05-29 11:04:04.899 [main] INFO  c.E.r.InvoiceRepositoryTest - updateInvoice passed 
+24-05-29 11:04:04.904 [main] INFO  c.E.r.InvoiceRepositoryTest - Starting saveInvoiceTest 
+24-05-29 11:04:05.159 [main] INFO  c.E.r.InvoiceRepositoryTest - saveInvoiceTest passed 
+24-05-29 11:04:05.163 [main] INFO  c.E.r.InvoiceRepositoryTest - Starting findInvoiceById 
+24-05-29 11:04:05.951 [main] INFO  c.E.r.InvoiceRepositoryTest - findInvoiceById passed 
+24-05-29 11:04:05.956 [main] INFO  c.E.r.InvoiceRepositoryTest - Starting deleteInvoice 
+24-05-29 11:04:07.102 [main] INFO  c.E.r.InvoiceRepositoryTest - deleteInvoice passed 
+24-05-29 11:04:07.139 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.repositoriesTest.LeavesRepositoryTest]: LeavesRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
+24-05-29 11:04:07.146 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.repositoriesTest.LeavesRepositoryTest 
+24-05-29 11:04:08.441 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.repositoriesTest.ProjectRepositoryTest]: ProjectRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
+24-05-29 11:04:08.444 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.repositoriesTest.ProjectRepositoryTest 
+24-05-29 11:04:08.452 [main] INFO  c.E.r.ProjectRepositoryTest - Starting updateProject 
+24-05-29 11:04:10.462 [main] INFO  c.E.r.ProjectRepositoryTest - updateProject passed 
+24-05-29 11:04:10.467 [main] INFO  c.E.r.ProjectRepositoryTest - Starting addAll 
+24-05-29 11:04:11.014 [main] INFO  c.E.r.ProjectRepositoryTest - addAll passed 
+24-05-29 11:04:11.019 [main] INFO  c.E.r.ProjectRepositoryTest - Starting findByNameTest 
+24-05-29 11:04:13.206 [main] INFO  c.E.r.ProjectRepositoryTest - findByNameTest passed 
+24-05-29 11:04:13.210 [main] INFO  c.E.r.ProjectRepositoryTest - Starting deleteProject 
+24-05-29 11:04:15.025 [main] INFO  c.E.r.ProjectRepositoryTest - deleteProject passed 
+24-05-29 11:04:15.030 [main] INFO  c.E.r.ProjectRepositoryTest - Starting saveProjectTest 
+24-05-29 11:04:15.436 [main] INFO  c.E.r.ProjectRepositoryTest - saveProjectTest passed 
+24-05-29 11:04:15.443 [main] INFO  c.E.r.ProjectRepositoryTest - Starting findProjectById 
+24-05-29 11:04:16.735 [main] INFO  c.E.r.ProjectRepositoryTest - findProjectById passed 
+24-05-29 11:04:16.739 [main] INFO  c.E.r.ProjectRepositoryTest - Starting findAllProjects 
+24-05-29 11:04:18.013 [main] INFO  c.E.r.ProjectRepositoryTest - findAllProjects passed 
+24-05-29 11:04:18.056 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.repositoriesTest.SalaryStructureRepositoryTest]: SalaryStructureRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
+24-05-29 11:04:18.073 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.repositoriesTest.SalaryStructureRepositoryTest 
+24-05-29 11:04:19.185 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting findAllAssetTest 
+24-05-29 11:04:19.191 [main] INFO  c.ERP.servicesTest.AssetServiceTest - findAllAssetTest passed 
+24-05-29 11:04:19.194 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting updateAssetTest 
+24-05-29 11:04:19.199 [main] INFO  c.ERP.servicesTest.AssetServiceTest - updateAssetTest passed 
+24-05-29 11:04:19.202 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting createAllAssetsTest 
+24-05-29 11:04:19.206 [main] INFO  c.ERP.servicesTest.AssetServiceTest - createAllAssetsTest passed 
+24-05-29 11:04:19.209 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting createAssetTest 
+24-05-29 11:04:19.211 [main] INFO  c.ERP.servicesTest.AssetServiceTest - createAssetTest passed 
+24-05-29 11:04:19.215 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting findAssetTest 
+24-05-29 11:04:19.219 [main] INFO  c.ERP.servicesTest.AssetServiceTest - findAssetTest passed 
+24-05-29 11:04:19.222 [main] INFO  c.ERP.servicesTest.AssetServiceTest - Starting deleteAssetTest 
+24-05-29 11:04:19.225 [main] INFO  c.ERP.servicesTest.AssetServiceTest - deleteAssetTest passed 
+24-05-29 11:04:19.536 [main] INFO  c.E.s.DepartmentServiceTest - Starting updateDepartmentTest 
+24-05-29 11:04:19.539 [main] INFO  c.E.s.DepartmentServiceTest - updateDepartmentTest passed 
+24-05-29 11:04:19.542 [main] INFO  c.E.s.DepartmentServiceTest - Starting createDepartmentTest 
+24-05-29 11:04:19.551 [main] INFO  c.E.s.DepartmentServiceTest - createDepartmentTest passed 
+24-05-29 11:04:19.555 [main] INFO  c.E.s.DepartmentServiceTest - Starting deleteDepartmentTest 
+24-05-29 11:04:19.559 [main] INFO  c.E.s.DepartmentServiceTest - deleteDepartmentTest passed 
+24-05-29 11:04:19.563 [main] INFO  c.E.s.DepartmentServiceTest - Starting findDepartmentTest 
+24-05-29 11:04:19.566 [main] INFO  c.E.s.DepartmentServiceTest - findDepartmentTest passed 
+24-05-29 11:04:19.570 [main] INFO  c.E.s.DepartmentServiceTest - Starting createAllDepartmentsTest 
+24-05-29 11:04:19.581 [main] INFO  c.E.s.DepartmentServiceTest - createAllDepartmentsTest passed 
+24-05-29 11:04:19.585 [main] INFO  c.E.s.DepartmentServiceTest - Starting findAllDepartmentTest 
+24-05-29 11:04:19.588 [main] INFO  c.E.s.DepartmentServiceTest - findAllDepartmentTest passed 
+24-05-29 11:04:19.868 [main] INFO  c.E.servicesTest.InvoiceServiceTest - Starting updateInvoiceTest 
+24-05-29 11:04:19.871 [main] INFO  c.E.servicesTest.InvoiceServiceTest - updateInvoiceTest passed 
+24-05-29 11:04:19.875 [main] INFO  c.E.servicesTest.InvoiceServiceTest - Starting createAllInvoicesTest 
+24-05-29 11:04:19.882 [main] INFO  c.E.servicesTest.InvoiceServiceTest - createAllInvoicesTest passed 
+24-05-29 11:04:19.886 [main] INFO  c.E.servicesTest.InvoiceServiceTest - Starting deleteInvoiceTest 
+24-05-29 11:04:19.888 [main] INFO  c.E.servicesTest.InvoiceServiceTest - deleteInvoiceTest passed 
+24-05-29 11:04:19.892 [main] INFO  c.E.servicesTest.InvoiceServiceTest - Starting findAllInvoiceTest 
+24-05-29 11:04:19.893 [main] INFO  c.E.servicesTest.InvoiceServiceTest - findAllInvoiceTest passed 
+24-05-29 11:04:19.896 [main] INFO  c.E.servicesTest.InvoiceServiceTest - Starting createInvoiceTest 
+24-05-29 11:04:19.903 [main] INFO  c.E.servicesTest.InvoiceServiceTest - createInvoiceTest passed 
+24-05-29 11:04:19.907 [main] INFO  c.E.servicesTest.InvoiceServiceTest - Starting findInvoiceTest 
+24-05-29 11:04:19.908 [main] INFO  c.E.servicesTest.InvoiceServiceTest - findInvoiceTest passed 
+24-05-29 11:04:20.182 [main] INFO  c.E.servicesTest.ProjectServiceTest - Starting updateProjectTest 
+24-05-29 11:04:20.185 [main] INFO  c.E.servicesTest.ProjectServiceTest - updateProjectTest passed 
+24-05-29 11:04:20.188 [main] INFO  c.E.servicesTest.ProjectServiceTest - Starting deleteProjectTest 
+24-05-29 11:04:20.193 [main] INFO  c.E.servicesTest.ProjectServiceTest - deleteProjectTest passed 
+24-05-29 11:04:20.195 [main] INFO  c.E.servicesTest.ProjectServiceTest - Starting findAllProjectTest 
+24-05-29 11:04:20.197 [main] INFO  c.E.servicesTest.ProjectServiceTest - findAllProjectTest passed 
+24-05-29 11:04:20.200 [main] INFO  c.E.servicesTest.ProjectServiceTest - Starting createProjectTest 
+24-05-29 11:04:20.206 [main] INFO  c.E.servicesTest.ProjectServiceTest - createProjectTest passed 
+24-05-29 11:04:20.209 [main] INFO  c.E.servicesTest.ProjectServiceTest - Starting findProjectTest 
+24-05-29 11:04:20.211 [main] INFO  c.E.servicesTest.ProjectServiceTest - findProjectTest passed 
+24-05-29 11:04:20.214 [main] INFO  c.E.servicesTest.ProjectServiceTest - Starting createAllProjectsTest 
+24-05-29 11:04:20.219 [main] INFO  c.E.servicesTest.ProjectServiceTest - createAllProjectsTest passed 
+24-05-29 11:04:20.891 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+24-05-29 11:04:20.893 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+24-05-29 11:04:22.360 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 
+24-05-29 11:04:22.362 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+24-05-29 11:04:22.362 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated... 
+24-05-29 11:04:23.120 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed. 
