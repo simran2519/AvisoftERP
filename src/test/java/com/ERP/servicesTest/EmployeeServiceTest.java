@@ -4,15 +4,13 @@ package com.ERP.servicesTest;
 import com.ERP.dtos.EmployeeDto;
 import com.ERP.entities.Department;
 import com.ERP.entities.Employee;
+import com.ERP.repositories.DepartmentRepository;
 import com.ERP.repositories.EmployeeRepository;
 import com.ERP.services.EmployeeService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Answers;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,24 +23,33 @@ import static org.mockito.Mockito.*;
 class EmployeeServiceTest {
     @Mock
     private EmployeeRepository employeeRepository;
+    @Mock
+    private DepartmentRepository departmentRepository;
+
+
+    @InjectMocks
     private EmployeeService employeeService;
     AutoCloseable autoCloseable;
     Employee employee;
 
-    EmployeeDto employeeDto;
+   Department department;
 
 
 
     @BeforeEach
     void setUp() {
         autoCloseable = MockitoAnnotations.openMocks(this);
-        employeeService = new EmployeeService(employeeRepository);
+
+        department = Department.builder()
+                .departmentId(1L)
+                .name("Your Department Name")
+                .build();
         employee = Employee.builder()
                 .id(1L)
                 .name("daksh")
                 .email("dakshmalik437@gmail.com")
                 .role("Manager")
-                .department(Department.builder().name("Your Department Name").build())
+                .department(department)
                 .task(new ArrayList<>()) // Initialize tasks list
                 .salaryPayment(null) // Set salaryPayment, assuming it's nullable
                 .leaves(new ArrayList<>()) // Initialize leaves list
@@ -63,6 +70,11 @@ class EmployeeServiceTest {
 //        mock(EmployeeDto.class);
         mock(Employee.class);
 
+        mock(DepartmentRepository.class);
+//        mock(EmployeeDto.class);
+        mock(Department.class);
+
+        when(departmentRepository.findById(1L)).thenReturn(Optional.of(department));
         // Mocking behavior of employeeRepository.save()
         when(employeeRepository.save(employee)).thenReturn(employee);
 
