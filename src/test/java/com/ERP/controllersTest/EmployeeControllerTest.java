@@ -39,7 +39,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //@Import({SecurityConfig.class, JwtHelper.class})
 
 @WebMvcTest(EmployeeController.class)
-@ExtendWith({SpringExtension.class, MockitoExtension.class})
+@ExtendWith({SpringExtension.class , MockitoExtension.class})
 @ContextConfiguration(classes = TestSecurityConfig.class)
 public class EmployeeControllerTest {
 
@@ -89,7 +89,7 @@ public class EmployeeControllerTest {
         String requestJson=ow.writeValueAsString(employee1);
 
         when(employeeService.createEmployee(employee1,1L)).thenReturn(employee1);
-        this.mockMvc.perform(post("/employee/add")
+        this.mockMvc.perform(post("/employee/add/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andDo(print()).andExpect(status().isOk());
@@ -134,7 +134,7 @@ public class EmployeeControllerTest {
         String requestJson=ow.writeValueAsString(employee1);
 
         when(employeeService.createEmployee(employee1,1L)).thenReturn(employee1);
-        this.mockMvc.perform(post("/employee/add")
+        this.mockMvc.perform(post("/employee/add/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andDo(print()).andExpect(status().isOk());

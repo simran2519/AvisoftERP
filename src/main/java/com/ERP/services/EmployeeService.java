@@ -29,9 +29,7 @@ public class EmployeeService {
     @Autowired
     private DepartmentRepository departmentRepository;
 
-    public EmployeeService(EmployeeRepository employeeRepository) {
-      this.employeeRepository = employeeRepository;
-    }
+
 
     public Employee createEmployee(Employee employee,Long id) {
 
