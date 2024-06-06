@@ -1,6 +1,5 @@
 package com.ERP.config;
 
-
 import com.ERP.entities.JwtRequest;
 import com.ERP.entities.JwtResponse;
 import com.ERP.security.JwtHelper;
@@ -15,6 +14,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/auth")
@@ -31,38 +33,36 @@ public class AuthController {
 
     private Logger logger = LoggerFactory.getLogger(AuthController.class);
 
-
     @PostMapping("/login")
-    public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest request) {
-
-        this.doAuthenticate(request.getUsername(), request.getPassword());
-
+    public ResponseEntity<?> login(@RequestBody JwtRequest request) {
+        try {
+            this.doAuthenticate(request.getUsername(), request.getPassword());
+        } catch (BadCredentialsException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid Username or Password !!");
+        }
 
         UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUsername());
         String token = this.helper.generateToken(userDetails);
 
+        List<String> roles = userDetails.getAuthorities().stream()
+                .map(grantedAuthority -> grantedAuthority.getAuthority().replace("ROLE_", ""))
+                .collect(Collectors.toList());
+
         JwtResponse response = JwtResponse.builder()
                 .jwtToken(token)
-                .username(userDetails.getUsername()).build();
+                .username(userDetails.getUsername())
+                .roles(roles).build();
+
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     private void doAuthenticate(String email, String password) {
-
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(email, password);
-        try {
-            manager.authenticate(authentication);
-
-
-        } catch (BadCredentialsException e) {
-            throw new BadCredentialsException(" Invalid Username or Password  !!");
-        }
-
+        manager.authenticate(authentication);
     }
 
     @ExceptionHandler(BadCredentialsException.class)
-    public String exceptionHandler() {
-        return "Credentials Invalid !!";
+    public ResponseEntity<String> handleBadCredentialsException(BadCredentialsException ex) {
+        return new ResponseEntity<>("Invalid Username or Password !!", HttpStatus.UNAUTHORIZED);
     }
-
 }

@@ -24,7 +24,7 @@ public class EmployeeTest {
         MockitoAnnotations.openMocks(this);
         employee = Employee.builder()
                 .name("John Doe")
-                .email("john.doe@example.com")
+                .username("john.doe@example.com")
                 .role("Software Engineer")
                 // Set other attributes as needed
                 .build();
@@ -35,7 +35,7 @@ public class EmployeeTest {
         logger.info("Testing constructor");
         // Test if constructor sets the values correctly
         Assertions.assertEquals("John Doe", employee.getName());
-        Assertions.assertEquals("john.doe@example.com", employee.getEmail());
+        Assertions.assertEquals("john.doe@example.com", employee.getUsername());
         Assertions.assertEquals("Software Engineer", employee.getRole());
         // Add more assertions for other attributes if needed
     }
@@ -45,7 +45,7 @@ public class EmployeeTest {
         logger.info("Testing getters");
         // Test if getters return the correct values
         Assertions.assertEquals("John Doe", employee.getName());
-        Assertions.assertEquals("john.doe@example.com", employee.getEmail());
+        Assertions.assertEquals("john.doe@example.com", employee.getUsername());
         Assertions.assertEquals("Software Engineer", employee.getRole());
         // Add more assertions for other attributes if needed
     }
@@ -55,10 +55,10 @@ public class EmployeeTest {
         logger.info("Testing setters");
         // Test if setters correctly update the values
         employee.setName("Jane Doe");
-        employee.setEmail("jane.doe@example.com");
+        employee.setUsername("jane.doe@example.com");
         employee.setRole("Senior Software Engineer");
         Assertions.assertEquals("Jane Doe", employee.getName());
-        Assertions.assertEquals("jane.doe@example.com", employee.getEmail());
+        Assertions.assertEquals("jane.doe@example.com", employee.getUsername());
         Assertions.assertEquals("Senior Software Engineer", employee.getRole());
         // Add more assertions for other attributes if needed
     }

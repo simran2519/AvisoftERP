@@ -33,7 +33,7 @@ class EmployeeRepositoryTest {
         employee = Employee.builder()
                 .id(1L)
                 .name("daksh")
-                .email("dakshmalik437@gmail.com")
+                .username("dakshmalik437@gmail.com")
                 .role("Manager")
 
                 .task(new ArrayList<>()) // Initialize tasks list
@@ -61,7 +61,7 @@ class EmployeeRepositoryTest {
     void findByName_Found() {
         List<Employee>employees = employeeRepository.findByName("daksh");
         assertThat(employees.get(0).getName()).isEqualTo(stored.getName());
-        assertThat(employees.get(0).getEmail()).isEqualTo(stored.getEmail());
+        assertThat(employees.get(0).getUsername()).isEqualTo(stored.getUsername());
         assertThat(employees.get(0).getRole()).isEqualTo(stored.getRole());
 
     }

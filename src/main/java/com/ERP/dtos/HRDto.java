@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class HRDto {
     private long hrId;
     private String name;
+    private String username;
     private String password;
     private String role;
 }

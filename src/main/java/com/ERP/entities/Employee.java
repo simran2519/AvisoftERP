@@ -1,11 +1,11 @@
 package com.ERP.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Data
 @Entity
@@ -14,15 +14,17 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
+@Table(uniqueConstraints = @UniqueConstraint(
+        name = "username_unique",
+        columnNames = "username"))
 public class Employee {
 
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-    private String email;
+    private String username;
     private String password;
     private String role;
 
@@ -31,6 +33,7 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name="department_id")
+    @JsonBackReference
     private Department department;
 
     @OneToOne(mappedBy = "employee",cascade = CascadeType.ALL)
@@ -39,4 +42,6 @@ public class Employee {
     @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL)
     private List<Leaves> leaves;
 
+    @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Project> projectSet = new ArrayList<>();
 }

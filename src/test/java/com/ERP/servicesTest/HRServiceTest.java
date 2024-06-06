@@ -51,8 +51,8 @@ class HRServiceTest {
     @Test
     void createHR() {
         // Given
-        HRDto hrDto = new HRDto(1L, "John Doe", "password", "Admin");
-        HR newHR = new HR(1L, "John Doe", "password", "Admin");
+        HRDto hrDto = new HRDto(1L ,"John Doe","admin", "password", "Admin");
+        HR newHR = new HR(1L, "John Doe", "admin","password", "Admin");
 
         given(hrRepository.save(any(HR.class))).willReturn(newHR);
 
@@ -68,8 +68,8 @@ class HRServiceTest {
     void updateHR() {
         // Given
         long hrId = 1L;
-        HRDto hrDto = new HRDto(1L,"Updated Name", "updatedPassword", "Updated Role");
-        HR existingHR = new HR(hrId, "Existing Name", "existingPassword", "Existing Role");
+        HRDto hrDto = new HRDto(1L,"Updated Name", "updatedName","updatedPassword", "Updated Role");
+        HR existingHR = new HR(hrId, "Existing Name","existingName", "existingPassword", "Existing Role");
 
         given(hrRepository.findById(hrId)).willReturn(Optional.of(existingHR));
         given(hrRepository.save(any(HR.class))).willReturn(existingHR);
@@ -86,8 +86,8 @@ class HRServiceTest {
     void getAllHR() {
         // Given
         List<HR> hrList = Arrays.asList(
-                new HR(1L, "John Doe", "password", "Admin"),
-                new HR(2L, "Jane Doe", "password", "Manager")
+                new HR(1L, "John Doe", "newUser","password", "Admin"),
+                new HR(2L, "Jane Doe", "password", "newUser","Manager")
         );
 
         given(hrRepository.findAll()).willReturn(hrList);
@@ -104,7 +104,7 @@ class HRServiceTest {
     void getHRById() {
         // Given
         long hrId = 1L;
-        HR existingHR = new HR(hrId, "John Doe", "password", "Admin");
+        HR existingHR = new HR(hrId, "John Doe","newUser", "password", "Admin");
 
         given(hrRepository.findById(hrId)).willReturn(Optional.of(existingHR));
 
@@ -120,7 +120,7 @@ class HRServiceTest {
     void deleteHR() {
         // Given
         long hrId = 1L;
-        HR existingHR = new HR(hrId, "John Doe", "password", "Admin");
+        HR existingHR = new HR(hrId, "John Doe", "newUser","password", "Admin");
 
         given(hrRepository.findById(hrId)).willReturn(Optional.of(existingHR));
 
@@ -135,7 +135,7 @@ class HRServiceTest {
     @Test
     void createHR_WithException() {
         // Given
-        HRDto hrDto = new HRDto(1L,"John Doe", "password", "Admin");
+        HRDto hrDto = new HRDto(1L,"John Doe", "newUser","password", "Admin");
 
         given(hrRepository.save(any(HR.class))).willThrow(new RuntimeException("Failed to save"));
 
@@ -148,7 +148,7 @@ class HRServiceTest {
     void updateHR_WithException() {
         // Given
         long hrId = 1L;
-        HRDto hrDto = new HRDto(1L,"Updated Name", "updatedPassword", "Updated Role");
+        HRDto hrDto = new HRDto(1L,"Updated Name","newUser", "updatedPassword", "Updated Role");
 
         given(hrRepository.findById(hrId)).willReturn(Optional.empty());
 
@@ -184,7 +184,7 @@ class HRServiceTest {
     @Test
     void testDeleteHR()
     {
-        HR newHR = new HR(1L, "John Doe", "password", "Admin");
+        HR newHR = new HR(1L, "John Doe", "newUser","password", "Admin");
         long hrId = 1L;
         // Mock behavior
         given(hrRepository.findById(hrId)).willReturn(java.util.Optional.of(newHR));
@@ -198,7 +198,7 @@ class HRServiceTest {
     @Test
     public void findAllHRTest() {
         // Mock data
-        HR newHR = new HR(1L, "John Doe", "password", "Admin");
+        HR newHR = new HR(1L, "John Doe", "newUser","password", "Admin");
         List<HR> hrList = Arrays.asList(newHR, newHR); // Add necessary fields for hrs
 
         // Mock behavior

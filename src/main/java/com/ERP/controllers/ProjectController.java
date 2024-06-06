@@ -1,12 +1,14 @@
 package com.ERP.controllers;
 
 import com.ERP.dtos.ProjectDto;
+import com.ERP.entities.Project;
 import com.ERP.services.ProjectService;
 import com.ERP.utils.MyResponseGenerator;
 import jakarta.validation.Valid;
 import jakarta.validation.Validator;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +28,8 @@ public class ProjectController
         this.projectService=projectService;
         this.validator = validatorFactory.getValidator();
     }
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<Object> addProject(@Valid @RequestBody ProjectDto projectDto)
     {
@@ -39,7 +43,7 @@ public class ProjectController
             return MyResponseGenerator.generateResponse(HttpStatus.BAD_REQUEST,false,"Something went wrong",newProject);
         }
     }
-
+    @PreAuthorize("hasAnyRole('ADMIN', 'EMPLOYEE')")
     @PutMapping("/update/{projectId}")
     public ResponseEntity<Object> updateProject( @Valid @RequestBody ProjectDto projectDto,@PathVariable Long projectId)
     {
@@ -53,6 +57,7 @@ public class ProjectController
         }
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'EMPLOYEE')")
     @GetMapping("/find/{projectId}")
     public ResponseEntity<Object> findProject(@PathVariable long projectId)
     {
@@ -66,12 +71,14 @@ public class ProjectController
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/addAll")
     public List<ProjectDto> addAll( @Valid @RequestBody List< ProjectDto> projectDtos)
     {
         return projectService.addAllProject(projectDtos);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{projectId}")
     public ResponseEntity<Object> deleteProject(@PathVariable long projectId)
     {
@@ -84,10 +91,22 @@ public class ProjectController
             return MyResponseGenerator.generateResponse(HttpStatus.BAD_REQUEST,false,"Project is not Deleted Successfully",projectDto);
         }
     }
+
+    @PreAuthorize("hasAnyRole('ADMIN', 'EMPLOYEE')")
     @GetMapping("/findAll")
     public List<ProjectDto> findAll()
     {
         return projectService.findAllProject();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
+    @PatchMapping("/{projectId}/assign/{employeeId}")
+    public ResponseEntity<Object> assignProjectToEmployee(@PathVariable long projectId, @PathVariable long employeeId) {
+        Project assignedProject = projectService.assignProjectToEmployee(projectId, employeeId);
+        if (assignedProject != null) {
+            return MyResponseGenerator.generateResponse(HttpStatus.OK, true, "Project assigned to employee successfully", assignedProject);
+        } else {
+            return MyResponseGenerator.generateResponse(HttpStatus.BAD_REQUEST, false, "Something went wrong and project is not assigned", assignedProject);
+        }
+    }
 }

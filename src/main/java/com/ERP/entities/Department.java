@@ -1,5 +1,6 @@
 package com.ERP.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,5 +30,6 @@ public class Department
     private Set<Project> projectSet= new HashSet<>();
 
     @OneToMany(mappedBy = "department")
+    @JsonManagedReference
     private List<Employee> employees = new ArrayList<>();
 }

@@ -60,7 +60,7 @@ public class EmployeeControllerTest {
         employee1 = Employee.builder()
                 .id(1L)
                 .name("daksh")
-                .email("dakshmalik437@gmail.com")
+                .username("dakshmalik437@gmail.com")
                 .role("Manager")
                 .department(Department.builder().name("Your Department Name").build())
                 .task(new ArrayList<>()) // Initialize tasks list

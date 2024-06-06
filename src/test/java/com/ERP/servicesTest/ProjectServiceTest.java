@@ -4,6 +4,7 @@ import com.ERP.Reporting;
 import com.ERP.dtos.ProjectDto;
 import com.ERP.entities.Project;
 import com.ERP.entitiesTest.JsonReader;
+import com.ERP.repositories.EmployeeRepository;
 import com.ERP.repositories.ProjectRepository;
 import com.ERP.services.ProjectService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -35,6 +36,7 @@ public class ProjectServiceTest {
     private static final Logger logger = LoggerFactory.getLogger(ProjectServiceTest.class);
 
     private ProjectRepository projectRepository;
+    private EmployeeRepository employeeRepository;
     private ObjectMapper objectMapper;
     private ProjectService projectService;
     Project project;
@@ -61,8 +63,9 @@ public class ProjectServiceTest {
     @BeforeEach
     public void setUp() {
         projectRepository = Mockito.mock(ProjectRepository.class);
+        employeeRepository = Mockito.mock(EmployeeRepository.class);
         objectMapper = new ObjectMapper(); // Initialize objectMapper
-        projectService = new ProjectService(projectRepository, objectMapper);
+        projectService = new ProjectService(projectRepository, objectMapper,employeeRepository);
         MockitoAnnotations.openMocks(this);
         project= new Project();
         project.setProjectId(1L);

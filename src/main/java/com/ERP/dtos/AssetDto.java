@@ -25,7 +25,7 @@ public class AssetDto
         @Pattern(regexp = "^[^\\s].*$", message = "Name of Asset cannot be empty")
         private String name;
         @NotNull(message = "Description of Asset cannot be null")
-        @Size(min=1,max = 200,message = "min characters are 3 and maximum characters can be upto 50")
+        @Size(min=1,max = 200,message = "min characters are 1 and maximum characters can be upto 200")
         @Pattern(regexp = "^[^\\s].*$", message = "Description of Asset cannot be empty")
         private String description;
 

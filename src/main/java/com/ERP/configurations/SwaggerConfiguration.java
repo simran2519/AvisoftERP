@@ -1,7 +1,11 @@
 package com.ERP.configurations;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 
 @OpenAPIDefinition(info=@Info(title = "ERP APIs",
         description = "These apis are for ERP Project",
@@ -15,9 +19,9 @@ import io.swagger.v3.oas.annotations.info.Info;
 //        ,servers={@Server(description = "testEnv", url= "http://localhost:8080"),
 //                @Server(description = "devEnv", url="http://localhost/8080")
 //},
-//        security = @SecurityRequirement(name = "erpSecurity")
+        ,security = @SecurityRequirement(name = "erpSecurity")
 )
-//@SecurityScheme(name = "erpSecurity",in = SecuritySchemeIn.HEADER,type = SecuritySchemeType.HTTP,bearerFormat = "JWT",scheme = "bearer",description = "This is security for ERP application")
+@SecurityScheme(name = "erpSecurity",in = SecuritySchemeIn.HEADER,type = SecuritySchemeType.HTTP,bearerFormat = "JWT",scheme = "bearer",description = "This is security for ERP application")
 public class SwaggerConfiguration
 {
 }

@@ -94,9 +94,9 @@ public class EmployeeService {
           employee.setRole(employeeDto.getRole());
       }
 
-      if(Objects.nonNull(employeeDto.getEmail()) && !"".equalsIgnoreCase(employeeDto.getEmail()))
+      if(Objects.nonNull(employeeDto.getUsername()) && !"".equalsIgnoreCase(employeeDto.getUsername()))
       {
-          employee.setEmail(employeeDto.getEmail());
+          employee.setUsername(employeeDto.getUsername());
       }
 
       employeeRepository.save(employee);

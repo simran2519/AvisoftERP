@@ -9,6 +9,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,4 +24,5 @@ public class DepartmentDto
     @Size(min=1,max = 50,message = "min characters are 3 and maximum characters can be upto 50")
     @Pattern(regexp = "^[^\\s].*$", message = "Name of department cannot be empty")
     private String name;
+    private List<ProjectDto> employees = new ArrayList<>();
 }

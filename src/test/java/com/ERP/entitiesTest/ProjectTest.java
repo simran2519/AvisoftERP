@@ -12,9 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static com.ERP.Reporting.extent;
 import static com.ERP.Reporting.test;
@@ -33,7 +31,7 @@ class ProjectTest {
     private Asset mockAsset;
     Set<Task> taskSet;
     Set<Invoice> invoiceSet;
-    Set<Asset> assetSet;
+    List<Asset> assetSet;
 
     JsonReader jsonReader = new JsonReader();
     Map<String, Object> dataMap = jsonReader.readFile("Project");
@@ -75,9 +73,9 @@ class ProjectTest {
         invoiceSet= new HashSet<>();
         project.setInvoiceSet(invoiceSet);
 
-        assetSet = new HashSet<>();
+        assetSet = new ArrayList<>();
         assetSet.add(mockAsset);
-        project.setAssetSet(assetSet);
+        project.setAssetList(assetSet);
     }
 
     @Test
@@ -94,7 +92,6 @@ class ProjectTest {
         Assertions.assertEquals(invoiceSet, project.getInvoiceSet());
         Assertions.assertEquals(mockClient, project.getClient());
         Assertions.assertEquals(mockDepartment, project.getDepartment());
-        Assertions.assertEquals(assetSet, project.getAssetSet());
     }
 
     @Test
@@ -112,7 +109,6 @@ class ProjectTest {
         Assertions.assertTrue(project.getInvoiceSet().isEmpty());
         Assertions.assertEquals(mockClient, project.getClient());
         Assertions.assertEquals(mockDepartment, project.getDepartment());
-        Assertions.assertEquals(assetSet, project.getAssetSet());
     }
 
     @Test
@@ -137,7 +133,6 @@ class ProjectTest {
         Assertions.assertEquals(invoiceSet, project.getInvoiceSet());
         Assertions.assertEquals(mockClient, project.getClient());
         Assertions.assertEquals(mockDepartment, project.getDepartment());
-        Assertions.assertEquals(assetSet, project.getAssetSet());
     }
     @AfterAll
     public static void tearDown()

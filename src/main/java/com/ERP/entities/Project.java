@@ -1,13 +1,14 @@
 package com.ERP.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 @Builder
 @Entity
@@ -42,11 +43,17 @@ public class Project
     private Client client;
 
     @ManyToOne
+    @JoinColumn(name = "employeeId")
+    @JsonIgnore
+    private Employee employee;
+
+    @ManyToOne
     @JoinColumn(name ="departmentId")
     private Department department;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="project_assets",joinColumns = @JoinColumn(name="projectId", referencedColumnName = "projectId"),
                inverseJoinColumns = @JoinColumn(name="assetId", referencedColumnName = "assetId"))
-    private Set<Asset> assetSet = new HashSet<>();
+    private List<Asset> assetList = new ArrayList<>();
+
 }

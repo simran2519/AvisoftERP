@@ -1,11 +1,10 @@
 package com.ERP.controllers;
 
-
-import com.ERP.entities.Department;
 import com.ERP.entities.Employee;
 import com.ERP.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -20,12 +19,14 @@ public class EmployeeController {
     @Autowired
     public EmployeeService employeeService;
 
+     @PreAuthorize("hasRole('ADMIN')")
      @PostMapping("/add/{id}")
      public ResponseEntity<Employee>createEmployee(@RequestBody Employee employee, @PathVariable Long id)
      {
          return ResponseEntity.ok(employeeService.createEmployee(employee,id));
      }
 
+     @PreAuthorize("hasRole('ADMIN')")
      @DeleteMapping("/deleteById/{id}")
      public ResponseEntity<Map<String,Boolean>>deleteEmployee(@PathVariable Long id )
      {
@@ -37,6 +38,7 @@ public class EmployeeController {
           return ResponseEntity.ok(response);
      }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{name}")
     public ResponseEntity<Map<String,Boolean>>deleteEmployeeByName(@PathVariable String name )
     {
@@ -48,19 +50,21 @@ public class EmployeeController {
         return ResponseEntity.ok(response);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/find")
     public ResponseEntity<List<Employee>> fetchEmployees()
     {
       return  ResponseEntity.ok(employeeService.fetchEmployees());
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/findById/{id}")
     public ResponseEntity<Employee>fetchEmployeeById(@PathVariable Long id)
     {
         return ResponseEntity.ok(employeeService.fetchEmployeeById(id));
     }
 
-
+    @PreAuthorize("hasAnyRole('ADMIN', 'EMPLOYEE')")
     @PutMapping("/update/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable ("id") Long id, @RequestBody Employee employeeDto)
     {

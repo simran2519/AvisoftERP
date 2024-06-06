@@ -1,8 +1,11 @@
 package com.ERP.services;
 
+import com.ERP.dtos.EmployeeDto;
 import com.ERP.dtos.ProjectDto;
+import com.ERP.entities.Employee;
 import com.ERP.entities.Project;
 import com.ERP.exceptions.IdNotFoundException;
+import com.ERP.repositories.EmployeeRepository;
 import com.ERP.repositories.ProjectRepository;
 import com.ERP.servicesInter.ProjectServiceInter;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -18,9 +21,11 @@ public class ProjectService implements ProjectServiceInter
 {
     private ProjectRepository projectRepository;
     private ObjectMapper objectMapper;
+    private EmployeeRepository employeeRepository;
 
-    public ProjectService(ProjectRepository projectRepository, ObjectMapper objectMapper)
+    public ProjectService(ProjectRepository projectRepository, ObjectMapper objectMapper,EmployeeRepository employeeRepository)
     {
+        this.employeeRepository = employeeRepository;
         this.projectRepository=projectRepository;
         this.objectMapper=objectMapper;
     }
@@ -29,6 +34,11 @@ public class ProjectService implements ProjectServiceInter
     public ProjectDto addProject(ProjectDto projectDto) {
         try {
             Project newProject = objectMapper.convertValue(projectDto, Project.class);
+//            if (projectDto.getEmployee() != null && projectDto.getEmployee().getId() != 0) {
+//                Employee employee = employeeRepository.findById(projectDto.getEmployee().getId())
+//                        .orElseThrow(() -> new IdNotFoundException("Employee not found with id: " + projectDto.getEmployee().getId()));
+//                newProject.setEmployee(employee);
+//            }
             projectRepository.save(newProject);
             return objectMapper.convertValue(newProject, ProjectDto.class);
         } catch (Exception e) {
@@ -108,6 +118,23 @@ public class ProjectService implements ProjectServiceInter
             return Arrays.asList(objectMapper.convertValue(projectList, ProjectDto[].class));
         } catch (Exception e) {
             throw new IdNotFoundException("Error finding all projects: " + e.getMessage());
+        }
+    }
+    public Project assignProjectToEmployee(long projectId, long employeeId) {
+        try {
+            Project project = projectRepository.findById(projectId)
+                    .orElseThrow(() -> new IdNotFoundException("Project not found with id: " + projectId));
+
+            Employee employee = employeeRepository.findById(employeeId)
+                    .orElseThrow(() -> new IdNotFoundException("Employee not found with id: " + employeeId));
+
+            project.setEmployee(employee);
+
+            projectRepository.save(project);
+
+            return projectRepository.save(project);
+        } catch (Exception e) {
+            throw new IdNotFoundException("Error assigning project to employee: " + e.getMessage());
         }
     }
 }

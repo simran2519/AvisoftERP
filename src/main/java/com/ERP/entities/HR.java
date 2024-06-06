@@ -11,10 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "hr_table", uniqueConstraints = @UniqueConstraint(
+@Table(name = "hr_table", uniqueConstraints = {@UniqueConstraint(
         name = "hr_id_unique",
         columnNames = "hr_id"
-))
+),
+        @UniqueConstraint(name = "username_unique", columnNames = "username")})
 public class HR {
     @Id
     @SequenceGenerator(
@@ -29,6 +30,7 @@ public class HR {
     private long hrId;
 
     private String name;
+    private String username;
     private String password;
     private String role;
 }

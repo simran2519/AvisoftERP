@@ -127,8 +127,8 @@ class HRControllerTest {
     void testFindAllHR_ReturnsListOfHRDto() {
         // Prepare test data
         List<HRDto> hrDtoList = List.of(
-                new HRDto(1L, "HR 1", "password1", "Admin"),
-                new HRDto(2L, "HR 2", "password2", "User")
+                new HRDto(1L,"admin" ,"HR 1", "password1", "Admin"),
+                new HRDto(2L,"user", "HR 2", "password2", "User")
         );
 
         // Mock HRService behavior to return the list of HRDto objects
@@ -157,7 +157,7 @@ class HRControllerTest {
     void testDeleteHR_ReturnsDeletedHRDto() {
         // Prepare test data
         long hrId = 1;
-        HRDto deletedHRDto = new HRDto(1L, "HR 1", "password1", "Admin");
+        HRDto deletedHRDto = new HRDto(1L,"hr1", "HR 1", "password1", "Admin");
 
         // Mock HRService behavior to return the deleted HRDto object
         when(hrService.deleteHR(hrId)).thenReturn(deletedHRDto);
