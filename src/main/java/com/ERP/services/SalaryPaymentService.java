@@ -25,11 +25,13 @@ public class SalaryPaymentService implements SalaryPaymentServiceInter {
     @Override
     public SalaryPaymentDto createSalaryPayment(SalaryPaymentDto salaryPaymentDto) {
         try {
+            System.out.println("here1");
             SalaryPayment newSalaryPayment = objectMapper.convertValue(salaryPaymentDto, SalaryPayment.class);
+            System.out.println("here2");
             SalaryPayment savedSalaryPayment = salaryPaymentRepository.save(newSalaryPayment);
             return objectMapper.convertValue(savedSalaryPayment, SalaryPaymentDto.class);
         } catch (Exception e) {
-            throw new IdNotFoundException("Error adding task: " + e.getMessage());
+            throw new IdNotFoundException("Error adding SalaryPayment: " + e.getMessage());
         }
     }
 

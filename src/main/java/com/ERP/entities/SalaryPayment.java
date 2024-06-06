@@ -9,8 +9,6 @@ import java.util.Date;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 public class SalaryPayment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +20,6 @@ public class SalaryPayment {
 
     private double amount;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "payment_date")
     private Date paymentDate;
-
 }

@@ -1,33 +1,22 @@
 package com.ERP.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SalaryPaymentDto {
-    private Long paymentId;
-
-    @NotNull(message = "Employee ID is required")
-    private Long employeeId;
+    private long paymentId;
 
     private double amount;
 
     @NotNull(message = "Payment date is required")
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date paymentDate;
-
-    public SalaryPaymentDto(Long paymentId, double amount, Date paymentDate) {
-        this.paymentId = paymentId;
-        this.amount = amount;
-        this.paymentDate = paymentDate;
-    }
 }

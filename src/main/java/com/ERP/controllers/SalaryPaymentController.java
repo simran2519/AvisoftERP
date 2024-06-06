@@ -16,16 +16,13 @@ import java.util.List;
 @RequestMapping("/salary-payment")
 public class SalaryPaymentController {
 
-    private final SalaryPaymentService salaryPaymentService;
-
     @Autowired
-    public SalaryPaymentController(SalaryPaymentService salaryPaymentService) {
-        this.salaryPaymentService = salaryPaymentService;
-    }
+    private SalaryPaymentService salaryPaymentService;
 
     @PostMapping("/add")
     public ResponseEntity<Object> addSalaryPayment(@Valid @RequestBody SalaryPaymentDto salaryPaymentDTO) {
         SalaryPaymentDto createdSalaryPayment = salaryPaymentService.createSalaryPayment(salaryPaymentDTO);
+
         if (createdSalaryPayment != null) {
             return MyResponseGenerator.generateResponse(HttpStatus.CREATED, true, "Salary Payment added successfully", createdSalaryPayment);
         } else {

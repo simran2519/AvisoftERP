@@ -1,6 +1,8 @@
 package com.ERP.controllers;
 
 import com.ERP.dtos.TaskDto;
+import com.ERP.entities.TaskHistory;
+import com.ERP.services.TaskHistoryService;
 import com.ERP.services.TaskService;
 import com.ERP.utils.MyResponseGenerator;
 import jakarta.validation.Valid;
@@ -15,17 +17,25 @@ import java.util.List;
 @RequestMapping("/task")
 public class TaskController {
 
-    private final TaskService taskService;
+    @Autowired
+    private TaskService taskService;
 
     @Autowired
-    public TaskController(TaskService taskService) {
-        this.taskService = taskService;
-    }
+    private TaskHistoryService taskHistoryService;
+
+//    @Autowired
+//    public TaskController(TaskService taskService, TaskHistoryService taskHistoryService) {
+//        this.taskService = taskService;
+//        this.taskHistoryService = taskHistoryService;
+//    }
 
     @PostMapping("/add")
     public ResponseEntity<Object> addTask(@Valid @RequestBody TaskDto taskDTO) {
         TaskDto createdTask = taskService.createTask(taskDTO);
         if (createdTask != null) {
+            TaskHistory createdTaskHistory = new TaskHistory(taskDTO.getTaskId(), taskDTO.getName(), taskDTO.getDescription(), taskDTO.getStartDate(), taskDTO.getEndDate(), taskDTO.getStatus(), taskDTO.getAssignTo(), taskDTO.getEmployee());
+            taskHistoryService.createTaskHistory(createdTaskHistory);
+
             return MyResponseGenerator.generateResponse(HttpStatus.CREATED, true, "Task added successfully", createdTask);
         } else {
             return MyResponseGenerator.generateResponse(HttpStatus.BAD_REQUEST, false, "Failed to add task", null);
