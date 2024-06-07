@@ -1,5 +1,6 @@
 package com.ERP.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +23,10 @@ public class TaskHistory {
     private String name;
 
     private String description;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date startDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
     private String status;
 

@@ -1,6 +1,7 @@
 package com.ERP.controllers;
 
 import com.ERP.dtos.TaskDto;
+import com.ERP.dtos.TaskHistoryDto;
 import com.ERP.entities.TaskHistory;
 import com.ERP.services.TaskHistoryService;
 import com.ERP.services.TaskService;
@@ -33,8 +34,9 @@ public class TaskController {
     public ResponseEntity<Object> addTask(@Valid @RequestBody TaskDto taskDTO) {
         TaskDto createdTask = taskService.createTask(taskDTO);
         if (createdTask != null) {
-            /*TaskHistory createdTaskHistory = new TaskHistory(taskDTO.getTaskId(), taskDTO.getName(), taskDTO.getDescription(), taskDTO.getStartDate(), taskDTO.getEndDate(), taskDTO.getStatus(), taskDTO.getAssignTo(), taskDTO.getEmployee());
-            taskHistoryService.createTaskHistory(createdTaskHistory);*/
+
+            TaskHistoryDto createdTaskHistoryDto = new TaskHistoryDto(createdTask.getTaskId(), createdTask.getName(), createdTask.getDescription(), createdTask.getStartDate(), createdTask.getEndDate(), createdTask.getStatus());
+            taskHistoryService.createTaskHistory(createdTaskHistoryDto);
 
             return MyResponseGenerator.generateResponse(HttpStatus.CREATED, true, "Task added successfully", createdTask);
         } else {

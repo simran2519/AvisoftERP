@@ -1,6 +1,7 @@
 package com.ERP.services;
 
 import com.ERP.dtos.SalaryStructureDto;
+import com.ERP.dtos.TaskHistoryDto;
 import com.ERP.entities.SalaryStructure;
 import com.ERP.entities.Task;
 import com.ERP.entities.TaskHistory;
@@ -9,6 +10,8 @@ import com.ERP.repositories.TaskHistoryRepository;
 import com.ERP.repositories.TaskRepository;
 import com.ERP.servicesInter.TaskHistoryServiceInter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,12 +24,14 @@ public class TaskHistoryService implements TaskHistoryServiceInter {
     @Autowired
     private TaskHistoryRepository taskHistoryRepository;
 
-//    public TaskHistoryService(TaskHistoryRepository taskHistoryRepository, ObjectMapper objectMapper) {
-//        this.taskHistoryRepository = taskHistoryRepository;
-//    }
+    @Autowired
+    private ObjectMapper objectMapper;
 
-    public void createTaskHistory(TaskHistory createdTaskHistory){
-        TaskHistory savedTaskHistory = taskHistoryRepository.save(createdTaskHistory);
+    public void createTaskHistory(TaskHistoryDto taskHistoryDto){
+        TaskHistory newTaskHistory = objectMapper.convertValue(taskHistoryDto, TaskHistory.class);
+        System.out.println(taskHistoryDto.getStartDate() + " and " + newTaskHistory.getStartDate());
+        taskHistoryRepository.save(newTaskHistory);
+        System.out.println("Task Added to History !!");
     }
 
 //    public TaskHistory deleteTasksByProjectId(long projectId){
