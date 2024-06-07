@@ -24,8 +24,11 @@ public class TaskService implements TaskServiceInter {
 
     public TaskDto createTask(TaskDto taskDTO) {
         try {
+            System.out.println("hello1");
             Task newTask = objectMapper.convertValue(taskDTO, Task.class);
+            System.out.println("hello2");
             Task savedTask = taskRepository.save(newTask);
+            System.out.println("hello3");
             return objectMapper.convertValue(savedTask, TaskDto.class);
         } catch (Exception e) {
             throw new IdNotFoundException("Error adding task: " + e.getMessage());

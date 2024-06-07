@@ -33,8 +33,8 @@ public class TaskController {
     public ResponseEntity<Object> addTask(@Valid @RequestBody TaskDto taskDTO) {
         TaskDto createdTask = taskService.createTask(taskDTO);
         if (createdTask != null) {
-            TaskHistory createdTaskHistory = new TaskHistory(taskDTO.getTaskId(), taskDTO.getName(), taskDTO.getDescription(), taskDTO.getStartDate(), taskDTO.getEndDate(), taskDTO.getStatus(), taskDTO.getAssignTo(), taskDTO.getEmployee());
-            taskHistoryService.createTaskHistory(createdTaskHistory);
+            /*TaskHistory createdTaskHistory = new TaskHistory(taskDTO.getTaskId(), taskDTO.getName(), taskDTO.getDescription(), taskDTO.getStartDate(), taskDTO.getEndDate(), taskDTO.getStatus(), taskDTO.getAssignTo(), taskDTO.getEmployee());
+            taskHistoryService.createTaskHistory(createdTaskHistory);*/
 
             return MyResponseGenerator.generateResponse(HttpStatus.CREATED, true, "Task added successfully", createdTask);
         } else {
