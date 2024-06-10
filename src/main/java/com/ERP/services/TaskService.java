@@ -30,7 +30,6 @@ public class TaskService implements TaskServiceInter {
 
     public TaskDto createTask(TaskDto taskDTO) {
         try {
-
             Task newTask = Task.builder().name(taskDTO.getName())
                     .startDate(taskDTO.getStartDate()).endDate(taskDTO.getEndDate())
                     .description(taskDTO.getDescription()).status(taskDTO.getStatus())
@@ -46,6 +45,7 @@ public class TaskService implements TaskServiceInter {
             newTask.setEmployee(employee);
             taskDTO.setTaskId(newTask.getTaskId());
             Task savedTask = taskRepository.save(newTask);
+            taskDTO.setTaskId(savedTask.getTaskId());
             return taskDTO;
         } catch (Exception e) {
             throw new IdNotFoundException("Error adding task: " + e.getMessage());

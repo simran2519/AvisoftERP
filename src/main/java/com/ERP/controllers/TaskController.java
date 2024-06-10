@@ -1,7 +1,7 @@
 package com.ERP.controllers;
 
 import com.ERP.dtos.TaskDto;
-import com.ERP.dtos.TaskHistoryDto;
+import com.ERP.entities.TaskHistory;
 import com.ERP.services.TaskHistoryService;
 import com.ERP.services.TaskService;
 import com.ERP.utils.MyResponseGenerator;
@@ -16,26 +16,23 @@ import java.util.List;
 @RestController
 @RequestMapping("/task")
 public class TaskController {
-
     @Autowired
     private TaskService taskService;
-
     @Autowired
     private TaskHistoryService taskHistoryService;
-
-//    @Autowired
-//    public TaskController(TaskService taskService, TaskHistoryService taskHistoryService) {
-//        this.taskService = taskService;
-//        this.taskHistoryService = taskHistoryService;
-//    }
 
     @PostMapping("/add")
     public ResponseEntity<Object> addTask(@Valid @RequestBody TaskDto taskDTO) {
         TaskDto createdTask = taskService.createTask(taskDTO);
         if (createdTask != null) {
 
-//            TaskHistoryDto createdTaskHistoryDto = new TaskHistoryDto(createdTask.getTaskId(), createdTask.getName(), createdTask.getDescription(), createdTask.getStartDate(), createdTask.getEndDate(), createdTask.getStatus());
-//            taskHistoryService.createTaskHistory(createdTaskHistoryDto);
+            TaskHistory taskHistory = TaskHistory.builder()
+                    .taskId(taskDTO.getTaskId()).name(taskDTO.getName())
+                    .startDate(taskDTO.getStartDate()).endDate(taskDTO.getEndDate())
+                    .description(taskDTO.getDescription()).status(taskDTO.getStatus())
+                    .assignTo(taskDTO.getProjectId()).employee(taskDTO.getEmployeeId())
+                    .build();
+            taskHistoryService.createTaskHistory(taskHistory);
 
             return MyResponseGenerator.generateResponse(HttpStatus.CREATED, true, "Task added successfully", createdTask);
         } else {
@@ -48,6 +45,14 @@ public class TaskController {
     public ResponseEntity<Object> updateTask(@PathVariable Long taskId, @Valid @RequestBody TaskDto taskDTO) {
         TaskDto updatedTask = taskService.updateTask(taskId, taskDTO);
         if (updatedTask != null) {
+            TaskHistory taskHistory = TaskHistory.builder()
+                    .taskId(taskDTO.getTaskId()).name(taskDTO.getName())
+                    .startDate(taskDTO.getStartDate()).endDate(taskDTO.getEndDate())
+                    .description(taskDTO.getDescription()).status(taskDTO.getStatus())
+                    .assignTo(taskDTO.getProjectId()).employee(taskDTO.getEmployeeId())
+                    .build();
+            taskHistoryService.createTaskHistory(taskHistory);
+
             return MyResponseGenerator.generateResponse(HttpStatus.OK, true, "Task updated successfully", updatedTask);
         } else {
             return MyResponseGenerator.generateResponse(HttpStatus.BAD_REQUEST, false, "Failed to update task", null);

@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface TaskHistoryRepository extends JpaRepository<TaskHistory, Long> {
-//    List<TaskHistory> findAllByProjectId(long projectId);
-//    List<TaskHistory> deleteByProjectId(long projectId);
+    List<TaskHistory> findAllByAssignTo(long projectId);
+    void deleteByAssignTo(long projectId);
 }
