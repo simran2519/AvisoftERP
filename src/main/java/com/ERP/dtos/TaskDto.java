@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 import java.sql.Date;
 
 @Data
-//@AllArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -34,6 +34,11 @@ public class TaskDto {
 
     @NotBlank(message = "Status is required")
     private String status;
+
+    @NotNull(message = "projectId should not be null")
+    private long projectId;
+    @NotNull(message = "employeeId should not be null")
+    private long employeeId;
 
     public TaskDto(long taskId, String name, String description, Date startDate, Date endDate, String status) {
         this.taskId = taskId;

@@ -36,6 +36,9 @@ public class TaskHistoryDto {
     @NotBlank(message = "Status is required")
     private String status;
 
+    private long projectId;
+    private long employeeId;
+
     public TaskHistoryDto(long taskId, String name, String description, Date startDate, Date endDate, String status) {
         this.taskId = taskId;
         this.name = name;

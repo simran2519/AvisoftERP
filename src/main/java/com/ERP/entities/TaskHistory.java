@@ -14,16 +14,13 @@ import java.sql.Date;
 @NoArgsConstructor
 @Table(name="taskHistory")
 public class TaskHistory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long taskHistoryId;
-
     private long taskId;
-
     private String name;
-
     private String description;
-
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date startDate;
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -31,9 +28,7 @@ public class TaskHistory {
     private String status;
 
     private long assignTo;
-
     private long employee;
-
     public TaskHistory(long taskId, String name, String description, Date startDate, Date endDate, String status,long assignTo, long employee) {
 
         this.taskId = taskId;

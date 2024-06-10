@@ -2,7 +2,6 @@ package com.ERP.controllers;
 
 import com.ERP.dtos.TaskDto;
 import com.ERP.dtos.TaskHistoryDto;
-import com.ERP.entities.TaskHistory;
 import com.ERP.services.TaskHistoryService;
 import com.ERP.services.TaskService;
 import com.ERP.utils.MyResponseGenerator;
@@ -35,11 +34,12 @@ public class TaskController {
         TaskDto createdTask = taskService.createTask(taskDTO);
         if (createdTask != null) {
 
-            TaskHistoryDto createdTaskHistoryDto = new TaskHistoryDto(createdTask.getTaskId(), createdTask.getName(), createdTask.getDescription(), createdTask.getStartDate(), createdTask.getEndDate(), createdTask.getStatus());
-            taskHistoryService.createTaskHistory(createdTaskHistoryDto);
+//            TaskHistoryDto createdTaskHistoryDto = new TaskHistoryDto(createdTask.getTaskId(), createdTask.getName(), createdTask.getDescription(), createdTask.getStartDate(), createdTask.getEndDate(), createdTask.getStatus());
+//            taskHistoryService.createTaskHistory(createdTaskHistoryDto);
 
             return MyResponseGenerator.generateResponse(HttpStatus.CREATED, true, "Task added successfully", createdTask);
         } else {
+            System.out.println("Creation of addTask is not working !!");
             return MyResponseGenerator.generateResponse(HttpStatus.BAD_REQUEST, false, "Failed to add task", null);
         }
     }
