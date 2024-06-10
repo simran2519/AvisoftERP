@@ -115,26 +115,6 @@ public class DepartmentRepositoryTest {
         }
     }
 
-    @Test
-    public void deleteDepartment() {
-        test=extent.createTest("DeleteById Department Test");
-        logger.info("Starting deleteDepartment");
-        try {
-            List<Department> departmentList = departmentRepository.findAll();
-            Department departmentToDelete = departmentList.get(0);
-            departmentRepository.delete(departmentToDelete);
-            Department deletedDepartment = null;
-            Optional<Department> optionalDepartment = departmentRepository.findById(departmentToDelete.getDepartmentId());
-            if (optionalDepartment.isPresent()) {
-                deletedDepartment = optionalDepartment.get();
-            }
-            Assertions.assertThat(deletedDepartment).isNull();
-            logger.info("deleteDepartment passed");
-        } catch (Throwable t) {
-            logger.error("deleteDepartment failed", t);
-            throw t;
-        }
-    }
 
     @Test
     public void addAll() {

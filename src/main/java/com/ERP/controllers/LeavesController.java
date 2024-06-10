@@ -4,6 +4,7 @@ import com.ERP.entities.Leaves;
 import com.ERP.exceptions.IdNotFoundException;
 import com.ERP.services.LeavesService;
 import com.ERP.utils.MyResponseGenerator;
+import io.swagger.annotations.ApiOperation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,6 +53,7 @@ public class LeavesController{
     }
 
     @GetMapping("/findAll")
+
     public ResponseEntity<Object> findAllLeaves() {
         try {
             List<Leaves> leavesList = leavesService.findAllLeaves();

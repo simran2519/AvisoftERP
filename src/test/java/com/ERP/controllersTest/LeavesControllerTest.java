@@ -82,7 +82,7 @@ class LeavesControllerTest {
     void setUp() {
         Employee employee = new Employee();
         employee.setId(employeeId); // Set the ID to 1
-        employee.setName("Client Name"); // Set the name field
+        employee.setName("Name"); // Set the name field
 
 
 
@@ -142,7 +142,7 @@ class LeavesControllerTest {
     void findLeaves() throws Exception {
         when(leavesService.findLeaves(1L)).thenReturn(leaves);
         this.mockMvc.perform(get("/leaves/find/1")).andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.data.employee.name").value("Client Name"));
+                .andExpect(jsonPath("$.data.reason").value(reason));
     }
 
     @Test

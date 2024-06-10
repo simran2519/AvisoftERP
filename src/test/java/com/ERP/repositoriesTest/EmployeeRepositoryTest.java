@@ -90,7 +90,7 @@ class EmployeeRepositoryTest {
 
 
     @Test
-    void testdelete()
+    void deleteById()
     {
 
         employeeRepository.delete(employeeRepository.findById(stored.getId()).get());

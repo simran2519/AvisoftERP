@@ -1,13 +1,18 @@
 package com.ERP.controllers;
 
 import com.ERP.entities.Client;
+import com.ERP.exceptions.ClientNotFoundException;
 import com.ERP.exceptions.IdNotFoundException;
 import com.ERP.services.ClientService;
 import com.ERP.utils.MyResponseGenerator;
+import io.swagger.annotations.ApiOperation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -58,6 +63,8 @@ public class ClientController {
         }
     }
     @GetMapping("/findAll")
+    @ApiOperation(value = "it is  to fetch list of all the clients")
+
     public ResponseEntity<Object> findAllClients() {
         try {
             List<Client> clients = clientService.findAllClients();

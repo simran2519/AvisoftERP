@@ -17,7 +17,6 @@ import java.util.List;
 public class Employee {
 
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -26,7 +25,7 @@ public class Employee {
     private String password;
     private String role;
 
-    @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Task>task = new ArrayList<>();
 
     @ManyToOne

@@ -1,5 +1,6 @@
 package com.ERP.entities;
 
+import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -23,6 +24,8 @@ public class Client
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @ApiModelProperty(value = "this is auto generated")
     private long clientId;
     @NotBlank(message = "Name is mandatory")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")

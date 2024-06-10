@@ -35,9 +35,11 @@ public class SecurityConfig {
                 .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         auth->
-                                auth.requestMatchers("/admin/**").hasRole("ADMIN")
+                               /* auth.requestMatchers("/admin/**").hasRole("ADMIN")
                                         .requestMatchers("/client/**").hasRole("EMPLOYEE")
-                                       .requestMatchers("/auth/login").permitAll().anyRequest().authenticated())
+                                       .requestMatchers("/auth/login").permitAll().anyRequest().authenticated())*/
+                                auth.requestMatchers("/**").permitAll()
+                                        .requestMatchers("/auth/login").permitAll().anyRequest().authenticated())
                 .userDetailsService(customUserDetailsService)
 
                 .exceptionHandling(ex->ex.authenticationEntryPoint(point))
