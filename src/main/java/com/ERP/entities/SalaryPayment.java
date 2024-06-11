@@ -8,6 +8,7 @@ import java.util.Date;
 @Data
 @Entity
 @AllArgsConstructor
+@Builder
 @NoArgsConstructor
 public class SalaryPayment {
     @Id

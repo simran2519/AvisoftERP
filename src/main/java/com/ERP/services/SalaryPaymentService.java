@@ -1,11 +1,14 @@
 package com.ERP.services;
 
 import com.ERP.dtos.SalaryPaymentDto;
+import com.ERP.entities.Employee;
 import com.ERP.entities.SalaryPayment;
 import com.ERP.exceptions.IdNotFoundException;
+import com.ERP.repositories.EmployeeRepository;
 import com.ERP.repositories.SalaryPaymentRepository;
 import com.ERP.servicesInter.SalaryPaymentServiceInter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,22 +17,27 @@ import java.util.Objects;
 
 @Service
 public class SalaryPaymentService implements SalaryPaymentServiceInter {
-    private final SalaryPaymentRepository salaryPaymentRepository;
-    private final ObjectMapper objectMapper;
-
-    public SalaryPaymentService(SalaryPaymentRepository salaryPaymentRepository, ObjectMapper objectMapper) {
-        this.salaryPaymentRepository = salaryPaymentRepository;
-        this.objectMapper = objectMapper;
-    }
+    @Autowired
+    private SalaryPaymentRepository salaryPaymentRepository;
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     @Override
     public SalaryPaymentDto createSalaryPayment(SalaryPaymentDto salaryPaymentDto) {
         try {
-            System.out.println("here1");
-            SalaryPayment newSalaryPayment = objectMapper.convertValue(salaryPaymentDto, SalaryPayment.class);
-            System.out.println("here2");
+            SalaryPayment newSalaryPayment = SalaryPayment.builder()
+                    .amount(salaryPaymentDto.getAmount()).paymentDate(salaryPaymentDto.getPaymentDate()).build();
             SalaryPayment savedSalaryPayment = salaryPaymentRepository.save(newSalaryPayment);
-            return objectMapper.convertValue(savedSalaryPayment, SalaryPaymentDto.class);
+
+            Employee employee = employeeRepository.findById(salaryPaymentDto.getEmployeeId())
+                    .orElseThrow(() -> new IdNotFoundException("Employee not found with ID: " + salaryPaymentDto.getEmployeeId()));
+
+            newSalaryPayment.setEmployee(employee);
+            SalaryPayment salaryPayment = salaryPaymentRepository.save(newSalaryPayment);
+            salaryPaymentDto.setPaymentId(salaryPayment.getPaymentId());
+
+            return salaryPaymentDto;
+
         } catch (Exception e) {
             throw new IdNotFoundException("Error adding SalaryPayment: " + e.getMessage());
         }
@@ -41,10 +49,6 @@ public class SalaryPaymentService implements SalaryPaymentServiceInter {
             SalaryPayment salaryPaymentToUpdate = salaryPaymentRepository.findById(paymentId)
                     .orElseThrow(() -> new IdNotFoundException("Salary Payment not found with id: " + paymentId));
 
-            // Update salary payment fields if they are not null or empty in the DTO
-//            if (Objects.nonNull(salaryPaymentDto.getEmployee())) {
-//                salaryPaymentToUpdate.setEmployee(salaryPaymentDto.getEmployee());
-//            }
             if (Objects.nonNull(salaryPaymentDto.getAmount())) {
                 salaryPaymentToUpdate.setAmount(salaryPaymentDto.getAmount());
             }
@@ -52,8 +56,13 @@ public class SalaryPaymentService implements SalaryPaymentServiceInter {
                 salaryPaymentToUpdate.setPaymentDate(salaryPaymentDto.getPaymentDate());
             }
 
+            Employee employee = employeeRepository.findById(salaryPaymentDto.getEmployeeId())
+                    .orElseThrow(() -> new IdNotFoundException("Employee not found with ID: " + salaryPaymentDto.getEmployeeId()));
+
+            salaryPaymentToUpdate.setEmployee(employee);
             SalaryPayment updatedSalaryPayment = salaryPaymentRepository.save(salaryPaymentToUpdate);
-            return objectMapper.convertValue(updatedSalaryPayment, SalaryPaymentDto.class);
+            salaryPaymentDto.setPaymentId(updatedSalaryPayment.getPaymentId());
+            return salaryPaymentDto;
         } catch (Exception e) {
             throw new IdNotFoundException("Error updating Salary Payment: " + e.getMessage());
         }
@@ -65,7 +74,11 @@ public class SalaryPaymentService implements SalaryPaymentServiceInter {
             List<SalaryPayment> salaryPaymentList = salaryPaymentRepository.findAll();
             List<SalaryPaymentDto> salaryPaymentDtoList = new ArrayList<>();
             for (SalaryPayment salaryPayment : salaryPaymentList) {
-                salaryPaymentDtoList.add(objectMapper.convertValue(salaryPayment, SalaryPaymentDto.class));
+                SalaryPaymentDto salaryPaymentDto = SalaryPaymentDto.builder()
+                        .paymentId(salaryPayment.getPaymentId()).employeeId(salaryPayment.getEmployee().getId())
+                        .amount(salaryPayment.getAmount()).paymentDate(salaryPayment.getPaymentDate()).build();
+
+                salaryPaymentDtoList.add(salaryPaymentDto);
             }
             return salaryPaymentDtoList;
         } catch (Exception e) {
@@ -73,23 +86,16 @@ public class SalaryPaymentService implements SalaryPaymentServiceInter {
         }
     }
 
-//    @Override
-//    public List<SalaryPaymentDto> getAllSalaryPayment() {
-//        try {
-//            List<SalaryPayment> salaryPaymentList = salaryPaymentRepository.findAll();
-//            return Arrays.asList(objectMapper.convertValue(salaryPaymentList, SalaryPaymentDto[].class));
-//        } catch (Exception e) {
-//            throw new IdNotFoundException("Error finding all Salary Payment: " + e.getMessage());
-//        }
-//    }
-
-
     @Override
     public SalaryPaymentDto getSalaryPaymentById(long paymentId) {
         try {
             SalaryPayment foundSalaryPayment = salaryPaymentRepository.findById(paymentId)
                     .orElseThrow(() -> new IdNotFoundException("Salary Payment not found with id: " + paymentId));
-            return objectMapper.convertValue(foundSalaryPayment, SalaryPaymentDto.class);
+            SalaryPaymentDto salaryPaymentDto = SalaryPaymentDto.builder()
+                    .paymentId(foundSalaryPayment.getPaymentId()).employeeId(foundSalaryPayment.getEmployee().getId())
+                    .amount(foundSalaryPayment.getAmount()).paymentDate(foundSalaryPayment.getPaymentDate()).build();
+
+            return salaryPaymentDto;
         } catch (Exception e) {
             throw new IdNotFoundException("Error finding Salary Payment: " + e.getMessage());
         }
@@ -101,7 +107,12 @@ public class SalaryPaymentService implements SalaryPaymentServiceInter {
             SalaryPayment salaryPaymentToDelete = salaryPaymentRepository.findById(paymentId)
                     .orElseThrow(() -> new IdNotFoundException("Salary Payment not found with id: " + paymentId));
             salaryPaymentRepository.deleteById(paymentId);
-            return objectMapper.convertValue(salaryPaymentToDelete, SalaryPaymentDto.class);
+
+            SalaryPaymentDto salaryPaymentDto = SalaryPaymentDto.builder()
+                    .paymentId(salaryPaymentToDelete.getPaymentId()).employeeId(salaryPaymentToDelete.getEmployee().getId())
+                    .amount(salaryPaymentToDelete.getAmount()).paymentDate(salaryPaymentToDelete.getPaymentDate()).build();
+
+            return salaryPaymentDto;
         } catch (Exception e) {
             throw new IdNotFoundException("Error deleting Salary Payment: " + e.getMessage());
         }
