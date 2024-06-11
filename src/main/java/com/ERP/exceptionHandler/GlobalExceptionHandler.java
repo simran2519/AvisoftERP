@@ -1,10 +1,7 @@
 package com.ERP.exceptionHandler;
 
 import com.ERP.entities.ExceptionMessage;
-import com.ERP.exceptions.HRNotFoundException;
-import com.ERP.exceptions.IdNotFoundException;
-import com.ERP.exceptions.SalaryStructureNotFoundException;
-import com.ERP.exceptions.TaskNotFoundException;
+import com.ERP.exceptions.*;
 import com.ERP.utils.MyResponseGenerator;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -79,4 +76,10 @@ public class GlobalExceptionHandler
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
     }
 
+    @ExceptionHandler(EmployeeNotFoundException.class)
+    public ResponseEntity<ExceptionMessage> employeeNotFoundException(EmployeeNotFoundException exception,
+                                                                  WebRequest request){
+        ExceptionMessage errorMessage = new ExceptionMessage(HttpStatus.NOT_FOUND, exception.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+    }
 }

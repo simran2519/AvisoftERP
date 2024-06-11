@@ -1,12 +1,16 @@
 package com.ERP.services;
 
 import com.ERP.dtos.ProjectDto;
+import com.ERP.entities.Client;
 import com.ERP.entities.Project;
+import com.ERP.exceptions.ClientNotFoundException;
 import com.ERP.exceptions.IdNotFoundException;
+import com.ERP.repositories.ClientRepository;
 import com.ERP.repositories.ProjectRepository;
 import com.ERP.servicesInter.ProjectServiceInter;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -24,6 +28,9 @@ public class ProjectService implements ProjectServiceInter
         this.projectRepository=projectRepository;
         this.objectMapper=objectMapper;
     }
+
+    @Autowired
+    private ClientRepository clientRepository;
 
     @Override
     public ProjectDto addProject(ProjectDto projectDto) {
@@ -109,5 +116,31 @@ public class ProjectService implements ProjectServiceInter
         } catch (Exception e) {
             throw new IdNotFoundException("Error finding all projects: " + e.getMessage());
         }
+    }
+
+    public Project addProjectToClient(Long clientId, Project project) throws ClientNotFoundException {
+        Client client = clientRepository.findById(clientId)
+                .orElseThrow(() -> new ClientNotFoundException("Client not found with id: " + clientId));
+        project.setClient(client);
+        return projectRepository.save(project);
+    }
+
+    public List<Project> getProjectsByClient(Long clientId) throws ClientNotFoundException {
+        Client client = clientRepository.findById(clientId)
+                .orElseThrow(() -> new ClientNotFoundException("Client not found with id: " + clientId));
+        return projectRepository.findByClient(client);
+
+    }
+
+    public Project updateProjectStatus(Long clientId, Long projectId, String status) throws ClientNotFoundException {
+        Client client = clientRepository.findById(clientId)
+                .orElseThrow(() -> new ClientNotFoundException("Client not found with id: " + clientId));
+        Project project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new IdNotFoundException("Project not found with id: " + projectId));
+        if (!project.getClient().equals(client)) {
+            throw new IllegalArgumentException("Project does not belong to the client");
+        }
+        project.setStatus(status);
+        return projectRepository.save(project);
     }
 }

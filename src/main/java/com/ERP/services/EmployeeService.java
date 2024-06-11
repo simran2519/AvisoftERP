@@ -2,12 +2,10 @@ package com.ERP.services;
 
 
 import com.ERP.dtos.EmployeeDto;
-import com.ERP.entities.Department;
-import com.ERP.entities.Employee;
-import com.ERP.entities.Authentication;
-import com.ERP.repositories.DepartmentRepository;
-import com.ERP.repositories.EmployeeRepository;
-import com.ERP.repositories.UserEntityRepository;
+import com.ERP.entities.*;
+import com.ERP.exceptions.ClientNotFoundException;
+import com.ERP.exceptions.EmployeeNotFoundException;
+import com.ERP.repositories.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,12 +27,22 @@ public class EmployeeService {
     @Autowired
     private DepartmentRepository departmentRepository;
 
+    @Autowired
+    private SalaryPaymentRepository salaryPaymentRepository;
+
+    @Autowired
+    private LeavesRepository leavesRepository;
+    @Autowired
+    private TaskRepository taskRepository;
 
 
-    public Employee createEmployee(Employee employee,Long id) {
 
+    public Employee createEmployee(Employee employee,Long id) throws EmployeeNotFoundException {
 
-      Optional <Department> department = departmentRepository.findById(id);
+        Optional <Department> department = departmentRepository.findById(id);
+       if (!department.isPresent()) {
+            throw new EmployeeNotFoundException("Department not found with id: " + id);
+        }
 //        Employee employee = new Employee();
 //        BeanUtils.copyProperties(employeeDto,employee);
         Authentication authentication = new Authentication();
@@ -47,18 +55,29 @@ public class EmployeeService {
         return employee;
     }
 
-    public boolean deleteEmployee(Long id) {
-        Employee employee = employeeRepository.findById(id).get();
-        employeeRepository.delete(employee);
-        return true;
+    public boolean deleteEmployee(Long id) throws EmployeeNotFoundException {
+       try {
+           Employee employee = employeeRepository.findById(id).get();
+           employeeRepository.delete(employee);
+           return true;
+       }
+       catch (Exception e){
+           throw new EmployeeNotFoundException("Department not found with id: " + id);
+       }
     }
 
 
-    public boolean deleteEmployeeByName(String name) {
-        List<Employee> employee = employeeRepository.findByName(name);
+    public boolean deleteEmployeeByName(String name) throws EmployeeNotFoundException {
+        try {
+            List<Employee> employee = employeeRepository.findByName(name);
 
-        employeeRepository.deleteAll(employee);
-        return true;
+            employeeRepository.deleteAll(employee);
+            return true;
+        }
+        catch (Exception e){
+            throw new EmployeeNotFoundException("Department not found with id: " );
+        }
+
     }
 
     public List<Employee> fetchEmployees() {
@@ -100,5 +119,31 @@ public class EmployeeService {
       employeeRepository.save(employee);
 
       return employeeDto;
+    }
+
+    public Employee assignTask(Long employeeId, Long taskId) {
+
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow();
+        Task task = taskRepository.findById(taskId).orElseThrow();
+        task.setEmployee(employee);
+        taskRepository.save(task);
+        return employee;
+    }
+
+    public Employee changeDepartment(Long employeeId, Long departmentId) {
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow();
+        Department department = departmentRepository.findById(departmentId).orElseThrow();
+        employee.setDepartment(department);
+        return employeeRepository.save(employee);
+    }
+
+
+
+    public Employee addSalaryPayment(Long employeeId, SalaryPayment salaryPayment) {
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow();
+        salaryPayment.setEmployee(employee);
+        salaryPaymentRepository.save(salaryPayment);
+        employee.setSalaryPayment(salaryPayment);
+        return employeeRepository.save(employee);
     }
 }

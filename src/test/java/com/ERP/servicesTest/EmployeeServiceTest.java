@@ -4,6 +4,7 @@ package com.ERP.servicesTest;
 import com.ERP.dtos.EmployeeDto;
 import com.ERP.entities.Department;
 import com.ERP.entities.Employee;
+import com.ERP.exceptions.EmployeeNotFoundException;
 import com.ERP.repositories.DepartmentRepository;
 import com.ERP.repositories.EmployeeRepository;
 import com.ERP.services.EmployeeService;
@@ -65,7 +66,7 @@ class EmployeeServiceTest {
     }
 
     @Test
-    void createEmployee() {
+    void createEmployee() throws EmployeeNotFoundException {
         mock(EmployeeRepository.class);
 //        mock(EmployeeDto.class);
         mock(Employee.class);
@@ -84,7 +85,7 @@ class EmployeeServiceTest {
     }
 
     @Test
-    void deleteEmployee() {
+    void deleteEmployee() throws EmployeeNotFoundException {
         mock(EmployeeRepository.class, Mockito.CALLS_REAL_METHODS);
 //        mock(EmployeeDto.class);
         mock(Employee.class);
@@ -94,7 +95,7 @@ class EmployeeServiceTest {
     }
 
     @Test
-    void deleteEmployeeByName() {
+    void deleteEmployeeByName() throws EmployeeNotFoundException {
         mock(EmployeeRepository.class, Mockito.CALLS_REAL_METHODS);
 //        mock(EmployeeDto.class);
         mock(Employee.class);
