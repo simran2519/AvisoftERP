@@ -92,8 +92,11 @@ public class SalaryPaymentTest {
                 new SalaryPayment(2L, null, 5000, Date.valueOf("2025-05-13"))
         );
 
-        SalaryPaymentDto salaryPaymentDto1 = new SalaryPaymentDto(1L, null, 5000, Date.valueOf("2024-05-13"));
-        SalaryPaymentDto salaryPaymentDto2 = new SalaryPaymentDto(1L, null, 5000, Date.valueOf("2024-05-13"));
+        /*SalaryPaymentDto salaryPaymentDto1 = new SalaryPaymentDto(1L, null, 5000, Date.valueOf("2024-05-13"));
+        SalaryPaymentDto salaryPaymentDto2 = new SalaryPaymentDto(1L, null, 5000, Date.valueOf("2024-05-13"));*/
+
+        SalaryPaymentDto salaryPaymentDto1 = new SalaryPaymentDto(1L, 5000, Date.valueOf("2024-05-13"));
+        SalaryPaymentDto salaryPaymentDto2 = new SalaryPaymentDto(1L, 5000, Date.valueOf("2024-05-13"));
 
         when(salaryPaymentRepository.findAll()).thenReturn(salaryPaymentList);
         when(objectMapper.convertValue(any(SalaryPayment.class), eq(SalaryPaymentDto.class)))

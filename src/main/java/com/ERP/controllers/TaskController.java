@@ -1,6 +1,8 @@
 package com.ERP.controllers;
 
 import com.ERP.dtos.TaskDto;
+import com.ERP.entities.TaskHistory;
+import com.ERP.services.TaskHistoryService;
 import com.ERP.services.TaskService;
 import com.ERP.utils.MyResponseGenerator;
 import jakarta.validation.Valid;
@@ -14,20 +16,27 @@ import java.util.List;
 @RestController
 @RequestMapping("/task")
 public class TaskController {
-
-    private final TaskService taskService;
-
     @Autowired
-    public TaskController(TaskService taskService) {
-        this.taskService = taskService;
-    }
+    private TaskService taskService;
+    @Autowired
+    private TaskHistoryService taskHistoryService;
 
     @PostMapping("/add")
     public ResponseEntity<Object> addTask(@Valid @RequestBody TaskDto taskDTO) {
         TaskDto createdTask = taskService.createTask(taskDTO);
         if (createdTask != null) {
+
+            TaskHistory taskHistory = TaskHistory.builder()
+                    .taskId(taskDTO.getTaskId()).name(taskDTO.getName())
+                    .startDate(taskDTO.getStartDate()).endDate(taskDTO.getEndDate())
+                    .description(taskDTO.getDescription()).status(taskDTO.getStatus())
+                    .assignTo(taskDTO.getProjectId()).employee(taskDTO.getEmployeeId())
+                    .build();
+            taskHistoryService.createTaskHistory(taskHistory);
+
             return MyResponseGenerator.generateResponse(HttpStatus.CREATED, true, "Task added successfully", createdTask);
         } else {
+            System.out.println("Creation of addTask is not working !!");
             return MyResponseGenerator.generateResponse(HttpStatus.BAD_REQUEST, false, "Failed to add task", null);
         }
     }
@@ -36,6 +45,14 @@ public class TaskController {
     public ResponseEntity<Object> updateTask(@PathVariable Long taskId, @Valid @RequestBody TaskDto taskDTO) {
         TaskDto updatedTask = taskService.updateTask(taskId, taskDTO);
         if (updatedTask != null) {
+            TaskHistory taskHistory = TaskHistory.builder()
+                    .taskId(taskDTO.getTaskId()).name(taskDTO.getName())
+                    .startDate(taskDTO.getStartDate()).endDate(taskDTO.getEndDate())
+                    .description(taskDTO.getDescription()).status(taskDTO.getStatus())
+                    .assignTo(taskDTO.getProjectId()).employee(taskDTO.getEmployeeId())
+                    .build();
+            taskHistoryService.createTaskHistory(taskHistory);
+
             return MyResponseGenerator.generateResponse(HttpStatus.OK, true, "Task updated successfully", updatedTask);
         } else {
             return MyResponseGenerator.generateResponse(HttpStatus.BAD_REQUEST, false, "Failed to update task", null);

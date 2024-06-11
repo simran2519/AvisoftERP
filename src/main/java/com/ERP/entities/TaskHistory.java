@@ -1,5 +1,6 @@
 package com.ERP.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,28 +11,24 @@ import java.sql.Date;
 
 @Entity
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Table(name="task")
-public class Task
-{
+@Table(name="taskHistory")
+public class TaskHistory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long taskHistoryId;
     private long taskId;
-    @Column
     private String name;
     private String description;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date startDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
     private String status;
 
-    @ManyToOne
-    @JoinColumn(name="projectId")
-    private Project assignTo;
-
-    @ManyToOne
-    @JoinColumn(name="employeeId")
-    private Employee employee;
+    private long assignTo;
+    private long employee;
 }
-

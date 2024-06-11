@@ -1,6 +1,7 @@
 package com.ERP.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TaskDto {
     private long taskId;
 
@@ -33,8 +35,10 @@ public class TaskDto {
     @NotBlank(message = "Status is required")
     private String status;
 
-    private long assignTo;
-    private long employee;
+    @NotNull(message = "projectId should not be null")
+    private long projectId;
+    @NotNull(message = "employeeId should not be null")
+    private long employeeId;
 
     public TaskDto(long taskId, String name, String description, Date startDate, Date endDate, String status) {
         this.taskId = taskId;
