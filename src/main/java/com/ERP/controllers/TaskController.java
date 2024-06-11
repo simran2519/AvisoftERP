@@ -1,12 +1,14 @@
 package com.ERP.controllers;
 
 import com.ERP.dtos.TaskDto;
+import com.ERP.entities.Task;
 import com.ERP.services.TaskService;
 import com.ERP.utils.MyResponseGenerator;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,12 +17,8 @@ import java.util.List;
 @RequestMapping("/task")
 public class TaskController {
 
-    private final TaskService taskService;
-
     @Autowired
-    public TaskController(TaskService taskService) {
-        this.taskService = taskService;
-    }
+    private TaskService taskService;
 
     @PostMapping("/add")
     public ResponseEntity<Object> addTask(@Valid @RequestBody TaskDto taskDTO) {
@@ -64,6 +62,18 @@ public class TaskController {
             return MyResponseGenerator.generateResponse(HttpStatus.OK, true, "Task deleted successfully", deletedTask);
         } else {
             return MyResponseGenerator.generateResponse(HttpStatus.BAD_REQUEST, false, "Failed to delete task", null);
+        }
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/{projectId}/addTask/{employeeId}")
+    public ResponseEntity<Object> assignTaskToEmployeeAtCreation(@Valid @RequestBody TaskDto taskDto,@PathVariable Long projectId,@PathVariable Long employeeId)
+    {
+        TaskDto taskToAdd = taskService.assignTaskToEmployee(taskDto,projectId,employeeId);
+        if (taskToAdd != null) {
+            return MyResponseGenerator.generateResponse(HttpStatus.CREATED, true, "Task successfully added to a project for a specific employee", taskToAdd);
+        } else {
+            return MyResponseGenerator.generateResponse(HttpStatus.BAD_REQUEST, false, "Failed to add task", null);
         }
     }
 }

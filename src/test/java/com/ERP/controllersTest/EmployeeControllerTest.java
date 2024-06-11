@@ -59,7 +59,6 @@ public class EmployeeControllerTest {
     void setUp() {
         employee1 = Employee.builder()
                 .id(1L)
-                .name("daksh")
                 .username("dakshmalik437@gmail.com")
                 .role("Manager")
                 .department(Department.builder().name("Your Department Name").build())
@@ -103,13 +102,13 @@ public class EmployeeControllerTest {
         this.mockMvc.perform(delete("/employee/deleteById/" + "1")).andDo(print()).andExpect(status().isOk());
     }
 
-    @Test
-    @WithMockUser
-    void deleteEmployeeByName() throws Exception {
-        when(employeeService.deleteEmployeeByName("daksh")).thenReturn(true);
-
-        this.mockMvc.perform(delete("/employee/delete/" + "daksh")).andDo(print()).andExpect(status().isOk());
-    }
+//    @Test
+//    @WithMockUser
+//    void deleteEmployeeByName() throws Exception {
+//        when(employeeService.deleteEmployeeByName("daksh")).thenReturn(true);
+//
+//        this.mockMvc.perform(delete("/employee/delete/" + "daksh")).andDo(print()).andExpect(status().isOk());
+//    }
 
     @Test
     @WithMockUser

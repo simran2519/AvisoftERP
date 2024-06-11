@@ -21,12 +21,12 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalExceptionHandler
 {
-//    @ExceptionHandler(value= IdNotFoundException.class)
-//    @ResponseStatus(value=HttpStatus.BAD_REQUEST)
-//    public ResponseEntity<Object> exceptionHandler()
-//    {
-//        return MyResponseGenerator.generateResponse(HttpStatus.BAD_REQUEST,false,"Id is not found",null);
-//    }
+    @ExceptionHandler(value= IdNotFoundException.class)
+    @ResponseStatus(value=HttpStatus.BAD_REQUEST)
+    public ResponseEntity<Object> exceptionHandler()
+    {
+        return MyResponseGenerator.generateResponse(HttpStatus.BAD_REQUEST,false,"Id is not found",null);
+    }
 
     @ExceptionHandler(value= NullPointerException.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)

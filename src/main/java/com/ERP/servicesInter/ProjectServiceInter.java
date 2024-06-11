@@ -14,4 +14,6 @@ public interface ProjectServiceInter
      List<ProjectDto> addAllProject(List<ProjectDto> projectDtos);
      List<ProjectDto> findAllProject();
      Project assignProjectToEmployee(long projectId, long employeeId);
+     Project assignProjectToDepartment(long projectId, long departmentId);
+
 }

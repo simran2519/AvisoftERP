@@ -1,5 +1,6 @@
 package com.ERP.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,6 +31,7 @@ public class Task
 
     @ManyToOne
     @JoinColumn(name="employeeId")
+    @JsonBackReference
     private Employee employee;
 }
 

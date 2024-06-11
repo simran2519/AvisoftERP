@@ -40,6 +40,10 @@ public class Client
     @Size(min = 5, max = 255, message = "Address must be between 5 and 255 characters")
     private String address;
 
+    private String username;
+    private String password;
+    private final String role="CLIENT";
+
     @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
     Set<Project> projectSet = new HashSet<>();
 }

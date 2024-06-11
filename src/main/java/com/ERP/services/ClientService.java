@@ -1,8 +1,11 @@
 package com.ERP.services;
+import com.ERP.entities.Authentication;
 import com.ERP.entities.Client;
 import com.ERP.exceptions.ClientNotFoundException;
 import com.ERP.exceptions.IdNotFoundException;
 import com.ERP.repositories.ClientRepository;
+import com.ERP.repositories.UserEntityRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,10 @@ import java.util.Objects;
 public class ClientService {
 
     @Autowired
+    ObjectMapper mapper;
+    @Autowired
+    UserEntityRepository userEntityRepository;
+    @Autowired
     ClientRepository clientRepository;
 
     public ClientService(ClientRepository clientRepository) {this.clientRepository = clientRepository;
@@ -21,6 +28,8 @@ public class ClientService {
     public Client addClient(Client client) throws ClientNotFoundException {
       try{
           clientRepository.save(client);
+          Authentication user= mapper.convertValue(client,Authentication.class);
+          userEntityRepository.save(user);
           return client;
       }
       catch (Exception e)

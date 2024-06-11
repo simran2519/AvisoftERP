@@ -26,10 +26,11 @@ public class Department
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-    private Set<Project> projectSet= new HashSet<>();
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL,orphanRemoval = true)
+    @JsonManagedReference
+    private List<Project> projectSet= new ArrayList<>();
 
-    @OneToMany(mappedBy = "department")
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Employee> employees = new ArrayList<>();
 }

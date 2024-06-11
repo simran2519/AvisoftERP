@@ -19,9 +19,7 @@ public class SalaryPayment {
     @OneToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
-
     private double amount;
-
     @Temporal(TemporalType.DATE)
     @Column(name = "payment_date")
     private Date paymentDate;

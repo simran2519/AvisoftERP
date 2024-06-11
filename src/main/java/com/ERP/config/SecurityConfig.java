@@ -35,17 +35,14 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-
-
         http.csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(
                         auth->
-//                                auth.requestMatchers("/employee/**").hasRole("EMPLOYEE")
-//                                         .requestMatchers("/project/**").hasRole("ADMIN")
                                         auth.requestMatchers( "/v3/api-docs/**",
                                                 "/swagger-ui/**",
                                                 "/swagger-ui.html").permitAll()
+                                                .requestMatchers("/user/add").permitAll()
                                        .requestMatchers("/auth/login").permitAll().anyRequest().authenticated())
                 .userDetailsService(customUserDetailsService)
 

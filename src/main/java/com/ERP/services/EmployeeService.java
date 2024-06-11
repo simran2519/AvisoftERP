@@ -8,6 +8,7 @@ import com.ERP.entities.Authentication;
 import com.ERP.repositories.DepartmentRepository;
 import com.ERP.repositories.EmployeeRepository;
 import com.ERP.repositories.UserEntityRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,8 @@ public class EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
+    @Autowired
+    private ObjectMapper mapper;
 
     @Autowired
     private DepartmentRepository departmentRepository;
@@ -40,12 +43,13 @@ public class EmployeeService {
 //        Employee employee = new Employee();
 //        BeanUtils.copyProperties(employeeDto,employee);
         Authentication authentication = new Authentication();
-        authentication.setUsername(employee.getName());
+        authentication.setUsername(employee.getUsername());
         authentication.setPassword(employee.getPassword());
         authentication.setRole("EMPLOYEE");
         employee.setDepartment(department.get());
         employeeRepository.save(employee);
-
+        Authentication user= mapper.convertValue(employee,Authentication.class);
+        userEntityRepository.save(user);
         return employee;
     }
 
@@ -56,12 +60,12 @@ public class EmployeeService {
     }
 
 
-    public boolean deleteEmployeeByName(String name) {
-        List<Employee> employee = employeeRepository.findByName(name);
-
-        employeeRepository.deleteAll(employee);
-        return true;
-    }
+//    public boolean deleteEmployeeByName(String username) {
+//        List<Employee> employee = employeeRepository.findByUserName(username);
+//
+//        employeeRepository.deleteAll(employee);
+//        return true;
+//    }
 
     public List<Employee> fetchEmployees() {
         List<Employee> employees = employeeRepository.findAll();
@@ -83,11 +87,6 @@ public class EmployeeService {
 
     public Employee updateEmployee(Long id, Employee employeeDto) {
       Employee employee = employeeRepository.findById(id).get();
-
-      if(Objects.nonNull(employeeDto.getName()) && !"".equalsIgnoreCase(employeeDto.getName()))
-      {
-          employee.setName(employeeDto.getName());
-      }
 
       if(Objects.nonNull(employeeDto.getRole()) && !"".equalsIgnoreCase(employeeDto.getRole()))
       {

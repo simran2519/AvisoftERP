@@ -30,7 +30,7 @@ public class DepartmentTest
 
     @Mock
     private Employee mockEmployee;
-    Set<Project> projectSet;
+    List<Project> projectSet;
     List<Employee> employees;
 
     JsonReader jsonReader = new JsonReader();
@@ -52,7 +52,7 @@ public class DepartmentTest
         department= new Department();
         department.setDepartmentId(1L);
         department.setName(name);
-        projectSet = new HashSet<>();
+        projectSet = new ArrayList<>();
         projectSet.add(mockProject);
         department.setProjectSet(projectSet);
 
@@ -87,7 +87,7 @@ public class DepartmentTest
         logger.info("Testing setters");
         department.setDepartmentId(2L);
         department.setName("Updated Department");
-        Set<Project> projectSet= new HashSet<>();
+        List<Project> projectSet= new ArrayList<>();
         projectSet.add(mockProject);
         department.setProjectSet(projectSet);
 

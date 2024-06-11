@@ -39,7 +39,7 @@ class EmployeeServiceTest {
         employeeService = new EmployeeService(employeeRepository);
         employee = Employee.builder()
                 .id(1L)
-                .name("daksh")
+//                .name("daksh")
                 .username("dakshmalik437@gmail.com")
                 .role("Manager")
                 .department(Department.builder().name("Your Department Name").build())
@@ -81,15 +81,15 @@ class EmployeeServiceTest {
         assertThat(employeeService.deleteEmployee(1L)).isEqualTo(true);
     }
 
-    @Test
-    void deleteEmployeeByName() {
-        mock(EmployeeRepository.class, Mockito.CALLS_REAL_METHODS);
-//        mock(EmployeeDto.class);
-        mock(Employee.class);
-        when(employeeRepository.findByName("daksh")).thenReturn(new ArrayList<Employee>(Collections.singleton(employee)));
-        doAnswer(Answers.CALLS_REAL_METHODS).when(employeeRepository).deleteAll(new ArrayList<Employee>(Collections.singleton(employee)));
-        assertThat(employeeService.deleteEmployeeByName("daksh")).isEqualTo(true);
-    }
+//    @Test
+//    void deleteEmployeeByName() {
+//        mock(EmployeeRepository.class, Mockito.CALLS_REAL_METHODS);
+////        mock(EmployeeDto.class);
+//        mock(Employee.class);
+//        when(employeeRepository.findByName("daksh")).thenReturn(new ArrayList<Employee>(Collections.singleton(employee)));
+//        doAnswer(Answers.CALLS_REAL_METHODS).when(employeeRepository).deleteAll(new ArrayList<Employee>(Collections.singleton(employee)));
+//        assertThat(employeeService.deleteEmployeeByName("daksh")).isEqualTo(true);
+//    }
 
     @Test
     void fetchEmployees() {
@@ -108,7 +108,7 @@ class EmployeeServiceTest {
 //        mock(EmployeeDto.class);
         mock(Employee.class);
         when(employeeRepository.findById(1L)).thenReturn(Optional.of(employee));
-        assertThat(employeeService.fetchEmployeeById(1L).getName()).isEqualTo(employee.getName());
+        assertThat(employeeService.fetchEmployeeById(1L).getUsername()).isEqualTo(employee.getUsername());
     }
 
     @Test

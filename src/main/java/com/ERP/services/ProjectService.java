@@ -2,14 +2,19 @@ package com.ERP.services;
 
 import com.ERP.dtos.EmployeeDto;
 import com.ERP.dtos.ProjectDto;
+import com.ERP.entities.Client;
+import com.ERP.entities.Department;
 import com.ERP.entities.Employee;
 import com.ERP.entities.Project;
 import com.ERP.exceptions.IdNotFoundException;
+import com.ERP.repositories.ClientRepository;
+import com.ERP.repositories.DepartmentRepository;
 import com.ERP.repositories.EmployeeRepository;
 import com.ERP.repositories.ProjectRepository;
 import com.ERP.servicesInter.ProjectServiceInter;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -19,6 +24,10 @@ import java.util.Objects;
 @Service
 public class ProjectService implements ProjectServiceInter
 {
+    @Autowired
+    private DepartmentRepository departmentRepository;
+    @Autowired
+    private ClientRepository clientRepository;
     private ProjectRepository projectRepository;
     private ObjectMapper objectMapper;
     private EmployeeRepository employeeRepository;
@@ -42,7 +51,7 @@ public class ProjectService implements ProjectServiceInter
             projectRepository.save(newProject);
             return objectMapper.convertValue(newProject, ProjectDto.class);
         } catch (Exception e) {
-            throw new IdNotFoundException("Error adding project: " + e.getMessage());
+            throw new RuntimeException("Error adding project: " + e.getMessage());
         }
     }
 
@@ -107,7 +116,7 @@ public class ProjectService implements ProjectServiceInter
             projectRepository.saveAll(projectList);
             return Arrays.asList(objectMapper.convertValue(projectDtos, ProjectDto[].class));
         } catch (Exception e) {
-            throw new IdNotFoundException("Error adding all projects: " + e.getMessage());
+            throw new RuntimeException("Error adding all projects: " + e.getMessage());
         }
     }
 
@@ -137,4 +146,40 @@ public class ProjectService implements ProjectServiceInter
             throw new IdNotFoundException("Error assigning project to employee: " + e.getMessage());
         }
     }
+    public Project assignProjectToDepartment(long projectId, long departmentId) {
+        try {
+            Project project = projectRepository.findById(projectId)
+                    .orElseThrow(() -> new IdNotFoundException("Project not found with id: " + projectId));
+
+            Department department = departmentRepository.findById(departmentId)
+                    .orElseThrow(() -> new IdNotFoundException("Department not found with id: " + departmentId));
+
+            project.setDepartment(department);
+
+            projectRepository.save(project);
+
+            return projectRepository.save(project);
+        } catch (Exception e) {
+            throw new IdNotFoundException("Error assigning project to department: " + e.getMessage());
+        }
+    }
+    public Project addClientToProject(long projectId, long clientId) {
+        try {
+            Project project = projectRepository.findById(projectId)
+                    .orElseThrow(() -> new IdNotFoundException("Project not found with id: " + projectId));
+
+            Client client = clientRepository.findById(clientId)
+                    .orElseThrow(() -> new IdNotFoundException("Client not found with id: " + clientId));
+
+            project.setClient(client);
+
+            projectRepository.save(project);
+
+            return projectRepository.save(project);
+        } catch (Exception e) {
+            throw new IdNotFoundException("Error adding client in a project: " + e.getMessage());
+        }
+    }
+
+
 }

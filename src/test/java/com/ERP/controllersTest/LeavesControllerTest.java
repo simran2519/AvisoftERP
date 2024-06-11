@@ -82,7 +82,7 @@ class LeavesControllerTest {
     void setUp() {
         Employee employee = new Employee();
         employee.setId(employeeId); // Set the ID to 1
-        employee.setName("Client Name"); // Set the name field
+        employee.setUsername("Client Name"); // Set the name field
 
 
 

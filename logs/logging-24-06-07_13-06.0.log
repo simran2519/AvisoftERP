@@ -1,0 +1,40 @@
+24-06-07 13:06:40.486 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.controllersTest.DepartmentControllerTest 
+24-06-07 13:06:41.052 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running 
+24-06-07 13:06:41.339 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final 
+24-06-07 13:06:41.386 [main] INFO  c.E.c.DepartmentControllerTest - Starting DepartmentControllerTest using Java 17.0.3.1 with PID 20260 (started by 91774 in C:\Users\91774\Desktop\AvisoftERPnew) 
+24-06-07 13:06:41.387 [main] INFO  c.E.c.DepartmentControllerTest - No active profile set, falling back to 1 default profile: "default" 
+24-06-07 13:06:43.646 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 60c3e026-81fd-45ff-8df3-cd3a5bc2b872
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+ 
+24-06-07 13:06:44.261 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1a67f8b4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5f1f0ee6, org.springframework.security.web.context.SecurityContextHolderFilter@43756cb, org.springframework.security.web.header.HeaderWriterFilter@39afe59f, org.springframework.web.filter.CorsFilter@326706d, org.springframework.security.web.authentication.logout.LogoutFilter@51cca357, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4e96cb04, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@70ecf57b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@76fc5687, org.springframework.security.web.access.ExceptionTranslationFilter@218f2f51, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@71734463] 
+24-06-07 13:06:44.558 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet '' 
+24-06-07 13:06:44.559 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet '' 
+24-06-07 13:06:44.562 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms 
+24-06-07 13:06:44.598 [main] INFO  c.E.c.DepartmentControllerTest - Started DepartmentControllerTest in 3.549 seconds (process running for 5.717) 
+24-06-07 13:06:44.683 [main] INFO  c.E.c.DepartmentControllerTest - Starting testDeleteDepartment 
+24-06-07 13:06:44.835 [main] INFO  c.E.security.JwtAuthenticationFilter - Header: null 
+24-06-07 13:06:44.835 [main] INFO  c.E.security.JwtAuthenticationFilter - Invalid Authorization header. 
+24-06-07 13:06:44.963 [main] INFO  c.E.c.DepartmentControllerTest - testDeleteDepartment passed 
+24-06-07 13:06:44.988 [main] INFO  c.E.c.DepartmentControllerTest - Starting getAllDepartmentsTest 
+24-06-07 13:06:44.994 [main] INFO  c.E.security.JwtAuthenticationFilter - Header: null 
+24-06-07 13:06:44.994 [main] INFO  c.E.security.JwtAuthenticationFilter - Invalid Authorization header. 
+24-06-07 13:06:45.039 [main] INFO  c.E.c.DepartmentControllerTest - getAllDepartmentsTest passed 
+24-06-07 13:06:45.048 [main] INFO  c.E.c.DepartmentControllerTest - Starting testUpdateDepartment 
+24-06-07 13:06:45.053 [main] INFO  c.E.security.JwtAuthenticationFilter - Header: null 
+24-06-07 13:06:45.053 [main] INFO  c.E.security.JwtAuthenticationFilter - Invalid Authorization header. 
+24-06-07 13:06:45.128 [main] INFO  c.E.c.DepartmentControllerTest - testUpdateDepartment passed 
+24-06-07 13:06:45.138 [main] INFO  c.E.c.DepartmentControllerTest - Starting getDepartmentTest 
+24-06-07 13:06:45.140 [main] INFO  c.E.security.JwtAuthenticationFilter - Header: null 
+24-06-07 13:06:45.140 [main] INFO  c.E.security.JwtAuthenticationFilter - Invalid Authorization header. 
+24-06-07 13:06:45.143 [main] INFO  c.E.c.DepartmentControllerTest - getDepartmentTest passed 
+24-06-07 13:06:45.154 [main] INFO  c.E.c.DepartmentControllerTest - Starting testAddAllDepartments 
+24-06-07 13:06:45.156 [main] INFO  c.E.security.JwtAuthenticationFilter - Header: null 
+24-06-07 13:06:45.156 [main] INFO  c.E.security.JwtAuthenticationFilter - Invalid Authorization header. 
+24-06-07 13:06:45.190 [main] INFO  c.E.c.DepartmentControllerTest - testAddAllDepartments passed 
+24-06-07 13:06:45.199 [main] INFO  c.E.c.DepartmentControllerTest - Starting testCreateDepartment 
+24-06-07 13:06:45.203 [main] INFO  c.E.security.JwtAuthenticationFilter - Header: null 
+24-06-07 13:06:45.203 [main] INFO  c.E.security.JwtAuthenticationFilter - Invalid Authorization header. 
+24-06-07 13:06:45.209 [main] INFO  c.E.c.DepartmentControllerTest - testCreateDepartment passed 

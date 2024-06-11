@@ -1,5 +1,6 @@
 package com.ERP.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -49,6 +50,7 @@ public class Project
 
     @ManyToOne
     @JoinColumn(name ="departmentId")
+    @JsonBackReference
     private Department department;
 
     @ManyToMany(fetch = FetchType.EAGER)

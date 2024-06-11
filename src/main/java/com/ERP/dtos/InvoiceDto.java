@@ -22,11 +22,8 @@ import java.sql.Date;
 public class InvoiceDto
 {
     private long invoiceId;
-    @NotNull(message = "amount cannot be null")
     private double amount;
-    @NotNull(message = "invoice Date cannot be empty")
     private Date invoiceDate;
-    @NotNull(message = "payment status cannot be null")
     @Size(min=1,max = 50,message = "min characters are 3 and maximum characters can be upto 50")
     @Pattern(regexp = "^[^\\s].*$", message = "payment status cannot be empty")
     private String paymentStatus;

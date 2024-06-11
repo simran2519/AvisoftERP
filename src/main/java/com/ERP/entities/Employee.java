@@ -2,6 +2,8 @@ package com.ERP.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,6 +16,7 @@ import java.util.*;
 @Getter
 @Setter
 @Builder
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(uniqueConstraints = @UniqueConstraint(
         name = "username_unique",
         columnNames = "username"))
@@ -22,13 +25,13 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String name;
+    private String email;
     private String username;
     private String password;
     private String role;
 
     @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Task>task = new ArrayList<>();
 
     @ManyToOne

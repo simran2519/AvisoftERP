@@ -1,11 +1,16 @@
 package com.ERP.services;
 
 import com.ERP.dtos.TaskDto;
+import com.ERP.entities.Employee;
+import com.ERP.entities.Project;
 import com.ERP.entities.Task;
 import com.ERP.exceptions.IdNotFoundException;
+import com.ERP.repositories.EmployeeRepository;
+import com.ERP.repositories.ProjectRepository;
 import com.ERP.repositories.TaskRepository;
 import com.ERP.servicesInter.TaskServiceInter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,6 +22,11 @@ public class TaskService implements TaskServiceInter {
     private final TaskRepository taskRepository;
     private final ObjectMapper objectMapper;
 
+    @Autowired
+    EmployeeRepository employeeRepository;
+
+    @Autowired
+    ProjectRepository projectRepository;
     public TaskService(TaskRepository taskRepository, ObjectMapper objectMapper) {
         this.taskRepository = taskRepository;
         this.objectMapper = objectMapper;
@@ -92,6 +102,26 @@ public class TaskService implements TaskServiceInter {
             return objectMapper.convertValue(taskToDelete, TaskDto.class);
         } catch (Exception e) {
             throw new IdNotFoundException("Error deleting task: " + e.getMessage());
+        }
+    }
+    public TaskDto assignTaskToEmployee(TaskDto taskDto,long projectId, long employeeId) {
+        try {
+
+            Task taskToAdd= objectMapper.convertValue(taskDto,Task.class);
+
+            Project project = projectRepository.findById(projectId)
+                    .orElseThrow(() -> new IdNotFoundException("Project not found with id: " + projectId));
+
+            Employee employee = employeeRepository.findById(employeeId)
+                    .orElseThrow(() -> new IdNotFoundException("Employee not found with id: " + employeeId));
+
+            taskToAdd.setEmployee(employee);
+            taskToAdd.setAssignTo(project);
+            taskRepository.save(taskToAdd);
+
+            return objectMapper.convertValue(taskToAdd,TaskDto.class);
+        } catch (Exception e) {
+            throw new IdNotFoundException("Error assigning task to employee: " + e.getMessage());
         }
     }
 }
