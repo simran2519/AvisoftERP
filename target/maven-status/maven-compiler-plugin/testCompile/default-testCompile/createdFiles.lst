@@ -19,7 +19,6 @@ com\ERP\servicesTest\EmployeeServiceTest.class
 com\ERP\entitiesTest\InvoiceTest.class
 com\ERP\entitiesTest\DepartmentTest.class
 com\ERP\repositoriesTest\DepartmentRepositoryTest.class
-com\ERP\repositoriesTest\SalaryStructureRepositoryTest.class
 com\ERP\servicesTest\ProjectServiceTest.class
 com\ERP\controllersTest\LeavesControllerTest.class
 com\ERP\controllersTest\AssetControllerTest.class

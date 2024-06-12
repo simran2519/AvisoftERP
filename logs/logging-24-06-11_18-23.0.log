@@ -1,2 +1,0 @@
-24-06-11 18:23:59.168 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.controllersTest.AssetControllerTest 
-24-06-11 18:23:59.812 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running 
