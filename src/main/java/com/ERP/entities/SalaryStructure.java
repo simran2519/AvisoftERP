@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -31,4 +33,5 @@ public class SalaryStructure {
     private String role;
     private String level;
     private double baseSalary;
+
 }
