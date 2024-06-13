@@ -29,9 +29,9 @@ public class SalaryPaymentControllerTest {
     @Test
     void testAddSalaryPayment_Success() {
         // Prepare test data
-        SalaryPaymentDto salaryPaymentDto = new SalaryPaymentDto(); // Create HRDto object as per your requirement
+        SalaryPaymentDto salaryPaymentDto = new SalaryPaymentDto();
 
-        // Mock HRService behavior
+        // Mock SalaryPaymentService behavior
         when(salaryPaymentService.createSalaryPayment(salaryPaymentDto)).thenReturn(new SalaryPaymentDto()); // Assuming createSalaryPayment always returns a non-null SalaryPaymentDto
 
         // Call controller method
@@ -44,9 +44,9 @@ public class SalaryPaymentControllerTest {
     @Test
     void testAddSalaryPayment_Failure() {
         // Prepare test data
-        SalaryPaymentDto salaryPaymentDto = new SalaryPaymentDto(); // Create HRDto object as per your requirement
+        SalaryPaymentDto salaryPaymentDto = new SalaryPaymentDto();
 
-        // Mock HRService behavior to return null
+        // Mock SalaryPaymentService behavior to return null
         when(salaryPaymentService.createSalaryPayment(salaryPaymentDto)).thenReturn(null);
 
         // Call controller method
@@ -62,7 +62,7 @@ public class SalaryPaymentControllerTest {
         long paymentId = 1;
         SalaryPaymentDto salaryPaymentDto = new SalaryPaymentDto(); // Create HRDto object as per your requirement
 
-        // Mock HRService behavior
+        // Mock SalaryPaymentService behavior
         when(salaryPaymentService.updateSalaryPayment(paymentId, salaryPaymentDto)).thenReturn(new SalaryPaymentDto()); // Assuming updateHR always returns a non-null HRDto
 
         // Call controller method
@@ -78,7 +78,7 @@ public class SalaryPaymentControllerTest {
         long paymentId = 1;
         SalaryPaymentDto salaryPaymentDto = new SalaryPaymentDto(); // Create SalaryPaymentDto object as per your requirement
 
-        // Mock HRService behavior to return null
+        // Mock SalaryPaymentService behavior to return null
         when(salaryPaymentService.updateSalaryPayment(paymentId, salaryPaymentDto)).thenReturn(null);
 
         // Call controller method
@@ -94,7 +94,7 @@ public class SalaryPaymentControllerTest {
         long hrId = 1;
         SalaryPaymentDto salaryPaymentDto = new SalaryPaymentDto(); // Create SalaryPaymentDto object as per your requirement
 
-        // Mock HRService behavior
+        // Mock SalaryPaymentService behavior
         when(salaryPaymentService.getSalaryPaymentById(hrId)).thenReturn(salaryPaymentDto); // Assuming getHRById returns a non-null HRDto when HR exists
 
         // Call controller method
@@ -109,7 +109,7 @@ public class SalaryPaymentControllerTest {
         // Prepare test data
         long paymentId = 1;
 
-        // Mock HRService behavior to return null
+        // Mock SalaryPaymentService behavior to return null
         when(salaryPaymentService.getSalaryPaymentById(paymentId)).thenReturn(null); // Assuming getHRById returns null when HR is not found
 
         // Call controller method
@@ -129,7 +129,7 @@ public class SalaryPaymentControllerTest {
                 new SalaryPaymentDto(2L, employee.getId(), 15000, Date.valueOf("2024-05-13"))
         );
 
-        // Mock HRService behavior to return the list of HRDto objects
+        // Mock SalaryPaymentService behavior to return the list of HRDto objects
         when(salaryPaymentService.getAllSalaryPayment()).thenReturn(salaryPaymentDtoList);
 
         // Call controller method
@@ -141,7 +141,7 @@ public class SalaryPaymentControllerTest {
 
     @Test
     void testFindAllSalaryPayment_NotFound() {
-        // Mock HRService behavior to return an empty list
+        // Mock SalaryPaymentService behavior to return an empty list
         when(salaryPaymentService.getAllSalaryPayment()).thenReturn(Collections.emptyList());
 
         // Call controller method
@@ -159,7 +159,7 @@ public class SalaryPaymentControllerTest {
         Employee employee = new Employee(1L,"raman","raman.kumar@avisoft.io", "password", "Employee", null,null,null,null);
         SalaryPaymentDto deletedSalaryPaymentDto = new SalaryPaymentDto(1L, employee.getId(), 5000, Date.valueOf("2024-05-13"));
 
-        // Mock HRService behavior to return the deleted HRDto object
+        // Mock SalaryPaymentService behavior to return the deleted HRDto object
         when(salaryPaymentService.deleteSalaryPayment(paymentId)).thenReturn(deletedSalaryPaymentDto);
 
         // Call controller method
@@ -174,7 +174,7 @@ public class SalaryPaymentControllerTest {
         // Prepare test data
         long paymentId = 1;
 
-        // Mock HRService behavior to return null when HR is not found
+        // Mock SalaryPaymentService behavior to return null when HR is not found
         when(salaryPaymentService.deleteSalaryPayment(paymentId)).thenReturn(null);
 
         // Call controller method
