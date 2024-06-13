@@ -2,6 +2,7 @@ package com.ERP.controllersTest;
 
 import com.ERP.controllers.SalaryPaymentController;
 import com.ERP.dtos.SalaryPaymentDto;
+import com.ERP.entities.Employee;
 import com.ERP.services.SalaryPaymentService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -121,9 +122,11 @@ public class SalaryPaymentControllerTest {
     @Test
     void testFindAllSalaryPayment_ReturnsListOfSalaryPaymentDto() {
         // Prepare test data
+
+        Employee employee = new Employee(1L,"raman","raman.kumar@avisoft.io", "password", "Employee", null,null,null,null);
         List<SalaryPaymentDto> salaryPaymentDtoList = List.of(
-                new SalaryPaymentDto(1L, 5000, Date.valueOf("2024-05-13")),
-                new SalaryPaymentDto(2L, 5000, Date.valueOf("2024-05-13"))
+                new SalaryPaymentDto(1L, employee.getId(), 5000, Date.valueOf("2024-05-13")),
+                new SalaryPaymentDto(2L, employee.getId(), 15000, Date.valueOf("2024-05-13"))
         );
 
         // Mock HRService behavior to return the list of HRDto objects
@@ -152,7 +155,9 @@ public class SalaryPaymentControllerTest {
     void testDeleteHR_ReturnsDeletedHRDto() {
         // Prepare test data
         long paymentId = 1;
-        SalaryPaymentDto deletedSalaryPaymentDto = new SalaryPaymentDto(2L, 5000, Date.valueOf("2024-05-13"));
+
+        Employee employee = new Employee(1L,"raman","raman.kumar@avisoft.io", "password", "Employee", null,null,null,null);
+        SalaryPaymentDto deletedSalaryPaymentDto = new SalaryPaymentDto(1L, employee.getId(), 5000, Date.valueOf("2024-05-13"));
 
         // Mock HRService behavior to return the deleted HRDto object
         when(salaryPaymentService.deleteSalaryPayment(paymentId)).thenReturn(deletedSalaryPaymentDto);
