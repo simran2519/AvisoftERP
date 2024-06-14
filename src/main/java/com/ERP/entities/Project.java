@@ -1,5 +1,7 @@
 package com.ERP.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,17 +34,21 @@ public class Project
     private String status;
 
     @OneToMany(mappedBy = "assignTo", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Task> taskSet= new HashSet<>();
 
     @OneToMany(mappedBy = "project",cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Invoice> invoiceSet= new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "clientId")
+    @JsonBackReference
     private Client client;
 
     @ManyToOne
     @JoinColumn(name ="departmentId")
+    @JsonBackReference
     private Department department;
 
     @ManyToMany(fetch = FetchType.EAGER)

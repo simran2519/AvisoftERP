@@ -1,6 +1,6 @@
 package com.ERP.services;
 
-import com.ERP.entities.Authentication;
+import com.ERP.entities.JwtAuthentication;
 import com.ERP.repositories.UserEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,8 +19,10 @@ private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Authentication user = userRepository.findByUsername(username);
+        JwtAuthentication user = userRepository.findByUsername(username);
                if(user==null)throw new UsernameNotFoundException("not found username");
+               JwtAuthentication authentication = new JwtAuthentication();
+
         return org.springframework.security.core.userdetails.User.builder()
 
                 .username(user.getUsername())

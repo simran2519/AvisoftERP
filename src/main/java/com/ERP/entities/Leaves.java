@@ -34,6 +34,5 @@ public class Leaves {
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
-    @JsonBackReference
     private Employee employee;
 }

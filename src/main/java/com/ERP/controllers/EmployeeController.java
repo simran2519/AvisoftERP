@@ -117,4 +117,16 @@ public class EmployeeController {
     public ResponseEntity<Employee> addSalaryPayment(@PathVariable Long employeeId, @RequestBody SalaryPayment salaryPayment) {
         return ResponseEntity.ok(employeeService.addSalaryPayment(employeeId, salaryPayment));
     }
+
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Employee>> searchEmployees(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String email,
+            @RequestParam(required = false) String role,
+            @RequestParam(required = false) Long departmentId) {
+
+        List<Employee> employees = employeeService.searchEmployees(name, email, role, departmentId);
+        return ResponseEntity.ok(employees);
+    }
 }

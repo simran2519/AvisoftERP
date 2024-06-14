@@ -20,7 +20,7 @@ import java.util.Collections;
 @Setter
 @ToString
 
-public class Authentication implements UserDetails{
+public class JwtAuthentication implements UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

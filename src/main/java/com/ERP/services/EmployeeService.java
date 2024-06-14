@@ -3,11 +3,12 @@ package com.ERP.services;
 
 import com.ERP.dtos.EmployeeDto;
 import com.ERP.entities.*;
-import com.ERP.exceptions.ClientNotFoundException;
 import com.ERP.exceptions.EmployeeNotFoundException;
 import com.ERP.repositories.*;
+import com.ERP.specifications.EmployeeSpecifications;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,10 +46,10 @@ public class EmployeeService {
         }
 //        Employee employee = new Employee();
 //        BeanUtils.copyProperties(employeeDto,employee);
-        Authentication authentication = new Authentication();
-        authentication.setUsername(employee.getName());
-        authentication.setPassword(employee.getPassword());
-        authentication.setRole("EMPLOYEE");
+        JwtAuthentication jwtAuthentication = new JwtAuthentication();
+        jwtAuthentication.setUsername(employee.getName());
+        jwtAuthentication.setPassword(employee.getPassword());
+        jwtAuthentication.setRole("EMPLOYEE");
         employee.setDepartment(department.get());
         employeeRepository.save(employee);
 
@@ -145,5 +146,14 @@ public class EmployeeService {
         salaryPaymentRepository.save(salaryPayment);
         employee.setSalaryPayment(salaryPayment);
         return employeeRepository.save(employee);
+    }
+
+    public List<Employee> searchEmployees(String name, String email, String role, Long departmentId) {
+        Specification<Employee> spec = Specification.where(EmployeeSpecifications.hasName(name))
+                .and(EmployeeSpecifications.hasEmail(email))
+                .and(EmployeeSpecifications.hasRole(role))
+                .and(EmployeeSpecifications.hasDepartmentId(departmentId));
+
+        return employeeRepository.findAll(spec);
     }
 }

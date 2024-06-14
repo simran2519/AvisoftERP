@@ -1,5 +1,6 @@
 package com.ERP.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,6 +18,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @Table(name = "department")
+
 public class Department
 {
     @Id
@@ -25,9 +27,12 @@ public class Department
     @Column
     private String name;
 
+
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Project> projectSet= new HashSet<>();
 
     @OneToMany(mappedBy = "department")
+    @JsonManagedReference
     private List<Employee> employees = new ArrayList<>();
 }
