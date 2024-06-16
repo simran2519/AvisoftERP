@@ -1,46 +1,5 @@
-24-06-13 13:27:04.856 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.repositoriesTest.SalaryPaymentTestRepository]: SalaryPaymentTestRepository does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-06-13 13:27:05.186 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.repositoriesTest.SalaryPaymentTestRepository 
-24-06-13 13:27:05.320 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running 
-24-06-13 13:27:05.700 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final 
-24-06-13 13:27:05.769 [main] INFO  c.E.r.SalaryPaymentTestRepository - Starting SalaryPaymentTestRepository using Java 17.0.11 with PID 10716 (started by Raman in D:\RamansERP) 
-24-06-13 13:27:05.769 [main] INFO  c.E.r.SalaryPaymentTestRepository - No active profile set, falling back to 1 default profile: "default" 
-24-06-13 13:27:06.594 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
-24-06-13 13:27:06.776 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 157 ms. Found 13 JPA repository interfaces. 
-24-06-13 13:27:07.349 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
-24-06-13 13:27:07.421 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final 
-24-06-13 13:27:07.462 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
-24-06-13 13:27:07.906 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
-24-06-13 13:27:07.961 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
-24-06-13 13:27:10.705 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@305552d6 
-24-06-13 13:27:10.725 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
-24-06-13 13:27:11.184 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
-24-06-13 13:27:11.188 [main] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead 
-24-06-13 13:27:13.118 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
-24-06-13 13:27:16.599 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
-24-06-13 13:27:17.355 [main] INFO  c.E.r.SalaryPaymentTestRepository - Started SalaryPaymentTestRepository in 12.044 seconds (process running for 14.113) 
-24-06-13 13:27:19.657 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
-24-06-13 13:27:19.661 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
-24-06-13 13:27:20.485 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 
-24-06-13 13:27:24.636 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.repositoriesTest.SalaryPaymentTestRepository]: SalaryPaymentTestRepository does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-06-13 13:27:24.867 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.repositoriesTest.SalaryPaymentTestRepository 
-24-06-13 13:27:25.014 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running 
-24-06-13 13:27:25.418 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final 
-24-06-13 13:27:25.484 [main] INFO  c.E.r.SalaryPaymentTestRepository - Starting SalaryPaymentTestRepository using Java 17.0.11 with PID 15692 (started by Raman in D:\RamansERP) 
-24-06-13 13:27:25.486 [main] INFO  c.E.r.SalaryPaymentTestRepository - No active profile set, falling back to 1 default profile: "default" 
-24-06-13 13:27:26.267 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
-24-06-13 13:27:26.405 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 122 ms. Found 13 JPA repository interfaces. 
-24-06-13 13:27:26.969 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
-24-06-13 13:27:27.067 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final 
-24-06-13 13:27:27.113 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
-24-06-13 13:27:27.599 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
-24-06-13 13:27:27.693 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
-24-06-13 13:27:29.434 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3ea48c37 
-24-06-13 13:27:29.439 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
-24-06-13 13:27:29.801 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
-24-06-13 13:27:29.814 [main] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead 
-24-06-13 13:27:31.758 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
-24-06-13 13:27:35.208 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
-24-06-13 13:27:36.072 [main] INFO  c.E.r.SalaryPaymentTestRepository - Started SalaryPaymentTestRepository in 11.072 seconds (process running for 13.316) 
-24-06-13 13:27:37.964 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
-24-06-13 13:27:37.974 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
-24-06-13 13:27:38.881 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 
+24-06-13 17:00:06.670 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+24-06-13 17:00:07.325 [main] INFO  c.E.r.TaskHistoryRepositoryTest - Started TaskHistoryRepositoryTest in 50.941 seconds (process running for 54.125) 
+24-06-13 17:00:17.563 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+24-06-13 17:00:17.563 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+24-06-13 17:00:23.587 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 

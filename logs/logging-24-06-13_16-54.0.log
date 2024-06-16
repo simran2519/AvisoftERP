@@ -1,0 +1,23 @@
+24-06-13 16:54:15.811 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.repositoriesTest.TaskHistoryRepositoryTest]: TaskHistoryRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
+24-06-13 16:54:16.313 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.repositoriesTest.TaskHistoryRepositoryTest 
+24-06-13 16:54:16.598 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running 
+24-06-13 16:54:17.199 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final 
+24-06-13 16:54:17.315 [main] INFO  c.E.r.TaskHistoryRepositoryTest - Starting TaskHistoryRepositoryTest using Java 17.0.11 with PID 8840 (started by Raman in D:\RamansERP) 
+24-06-13 16:54:17.317 [main] INFO  c.E.r.TaskHistoryRepositoryTest - No active profile set, falling back to 1 default profile: "default" 
+24-06-13 16:54:18.717 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+24-06-13 16:54:18.965 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 231 ms. Found 13 JPA repository interfaces. 
+24-06-13 16:54:19.967 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+24-06-13 16:54:20.168 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final 
+24-06-13 16:54:20.252 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+24-06-13 16:54:21.001 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+24-06-13 16:54:21.107 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+24-06-13 16:54:27.155 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2774dcf4 
+24-06-13 16:54:27.155 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+24-06-13 16:54:27.625 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+24-06-13 16:54:27.640 [main] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead 
+24-06-13 16:54:30.779 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+24-06-13 16:54:42.708 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+24-06-13 16:54:43.341 [main] INFO  c.E.r.TaskHistoryRepositoryTest - Started TaskHistoryRepositoryTest in 26.765 seconds (process running for 30.289) 
+24-06-13 16:54:48.461 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+24-06-13 16:54:48.476 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+24-06-13 16:54:50.567 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 

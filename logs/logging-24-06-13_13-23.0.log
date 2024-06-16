@@ -1,2 +1,0 @@
-24-06-13 13:23:59.601 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ERP.repositoriesTest.SalaryPaymentTestRepository]: SalaryPaymentTestRepository does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-24-06-13 13:23:59.903 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.ERP.ErpApplication for test class com.ERP.repositoriesTest.SalaryPaymentTestRepository 
