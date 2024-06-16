@@ -1,0 +1,5 @@
+24-06-13 17:00:06.670 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+24-06-13 17:00:07.325 [main] INFO  c.E.r.TaskHistoryRepositoryTest - Started TaskHistoryRepositoryTest in 50.941 seconds (process running for 54.125) 
+24-06-13 17:00:17.563 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+24-06-13 17:00:17.563 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+24-06-13 17:00:23.587 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 
